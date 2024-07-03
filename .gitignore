@@ -1,0 +1,1 @@
+.DS_Store# Xcode# this ignores dummy workspace files in xcodeproj dir**/*.xcodeproj/*!**/*.xcodeproj/project.pbxproj*.xcodeproj/xcuserdata/
