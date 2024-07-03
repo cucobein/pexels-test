@@ -11,9 +11,16 @@
 		FD22A1C62C33801700763C01 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD22A1C52C33801700763C01 /* ContentView.swift */; };
 		FD22A1C82C33801800763C01 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FD22A1C72C33801800763C01 /* Assets.xcassets */; };
 		FD22A1CB2C33801800763C01 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FD22A1CA2C33801800763C01 /* Preview Assets.xcassets */; };
-		FD22A1D52C33801900763C01 /* pexels_testTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD22A1D42C33801900763C01 /* pexels_testTests.swift */; };
 		FD22A1DF2C33801900763C01 /* pexels_testUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD22A1DE2C33801900763C01 /* pexels_testUITests.swift */; };
 		FD22A1E12C33801900763C01 /* pexels_testUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD22A1E02C33801900763C01 /* pexels_testUITestsLaunchTests.swift */; };
+		FD789BA92C34F3B6008A759D /* PexelsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD789BA82C34F3B6008A759D /* PexelsService.swift */; };
+		FD789BAB2C34F4A3008A759D /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD789BAA2C34F4A3008A759D /* Video.swift */; };
+		FD789BAD2C34F4DF008A759D /* VideoObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD789BAC2C34F4DF008A759D /* VideoObject.swift */; };
+		FD789BB02C34F4F8008A759D /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = FD789BAF2C34F4F8008A759D /* RealmSwift */; };
+		FD789BB12C34F4F8008A759D /* RealmSwift in Embed Frameworks */ = {isa = PBXBuildFile; productRef = FD789BAF2C34F4F8008A759D /* RealmSwift */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		FD789BB42C34F7B9008A759D /* PexelsServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD789BB32C34F7B9008A759D /* PexelsServiceTests.swift */; };
+		FD789BB72C34FE90008A759D /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD789BB62C34FE90008A759D /* Utils.swift */; };
+		FD789BBB2C34FF89008A759D /* PexelsSampleResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = FD789BBA2C34FF89008A759D /* PexelsSampleResponse.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,6 +40,20 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		FD789BB22C34F4F8008A759D /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				FD789BB12C34F4F8008A759D /* RealmSwift in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		FD22A1C02C33801700763C01 /* pexels-test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "pexels-test.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD22A1C32C33801700763C01 /* pexels_testApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pexels_testApp.swift; sourceTree = "<group>"; };
@@ -40,10 +61,15 @@
 		FD22A1C72C33801800763C01 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FD22A1CA2C33801800763C01 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		FD22A1D02C33801900763C01 /* pexels-testTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "pexels-testTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		FD22A1D42C33801900763C01 /* pexels_testTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pexels_testTests.swift; sourceTree = "<group>"; };
 		FD22A1DA2C33801900763C01 /* pexels-testUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "pexels-testUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD22A1DE2C33801900763C01 /* pexels_testUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pexels_testUITests.swift; sourceTree = "<group>"; };
 		FD22A1E02C33801900763C01 /* pexels_testUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pexels_testUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		FD789BA82C34F3B6008A759D /* PexelsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PexelsService.swift; sourceTree = "<group>"; };
+		FD789BAA2C34F4A3008A759D /* Video.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
+		FD789BAC2C34F4DF008A759D /* VideoObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoObject.swift; sourceTree = "<group>"; };
+		FD789BB32C34F7B9008A759D /* PexelsServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PexelsServiceTests.swift; sourceTree = "<group>"; };
+		FD789BB62C34FE90008A759D /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		FD789BBA2C34FF89008A759D /* PexelsSampleResponse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = PexelsSampleResponse.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +77,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FD789BB02C34F4F8008A759D /* RealmSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +105,7 @@
 				FD22A1D32C33801900763C01 /* pexels-testTests */,
 				FD22A1DD2C33801900763C01 /* pexels-testUITests */,
 				FD22A1C12C33801700763C01 /* Products */,
+				FD789BAE2C34F4F8008A759D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -94,6 +122,8 @@
 		FD22A1C22C33801700763C01 /* pexels-test */ = {
 			isa = PBXGroup;
 			children = (
+				FD789BA72C34F386008A759D /* Repository */,
+				FD789BA62C34F380008A759D /* Services */,
 				FD22A1C32C33801700763C01 /* pexels_testApp.swift */,
 				FD22A1C52C33801700763C01 /* ContentView.swift */,
 				FD22A1C72C33801800763C01 /* Assets.xcassets */,
@@ -113,7 +143,10 @@
 		FD22A1D32C33801900763C01 /* pexels-testTests */ = {
 			isa = PBXGroup;
 			children = (
-				FD22A1D42C33801900763C01 /* pexels_testTests.swift */,
+				FD789BB52C34FE24008A759D /* Utils */,
+				FD789BB92C34FF3D008A759D /* JSON */,
+				FD789BB82C34FE9C008A759D /* Mocks */,
+				FD789BB32C34F7B9008A759D /* PexelsServiceTests.swift */,
 			);
 			path = "pexels-testTests";
 			sourceTree = "<group>";
@@ -127,6 +160,53 @@
 			path = "pexels-testUITests";
 			sourceTree = "<group>";
 		};
+		FD789BA62C34F380008A759D /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				FD789BA82C34F3B6008A759D /* PexelsService.swift */,
+				FD789BAA2C34F4A3008A759D /* Video.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		FD789BA72C34F386008A759D /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				FD789BAC2C34F4DF008A759D /* VideoObject.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		FD789BAE2C34F4F8008A759D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FD789BB52C34FE24008A759D /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				FD789BB62C34FE90008A759D /* Utils.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		FD789BB82C34FE9C008A759D /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
+		FD789BB92C34FF3D008A759D /* JSON */ = {
+			isa = PBXGroup;
+			children = (
+				FD789BBA2C34FF89008A759D /* PexelsSampleResponse.json */,
+			);
+			path = JSON;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -138,12 +218,16 @@
 				FD22A1BD2C33801700763C01 /* Frameworks */,
 				FD22A1BE2C33801700763C01 /* Resources */,
 				FD789BA42C34D087008A759D /* Swiftlint */,
+				FD789BB22C34F4F8008A759D /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = "pexels-test";
+			packageProductDependencies = (
+				FD789BAF2C34F4F8008A759D /* RealmSwift */,
+			);
 			productName = "pexels-test";
 			productReference = FD22A1C02C33801700763C01 /* pexels-test.app */;
 			productType = "com.apple.product-type.application";
@@ -199,6 +283,7 @@
 					};
 					FD22A1CF2C33801900763C01 = {
 						CreatedOnToolsVersion = 15.4;
+						LastSwiftMigration = 1540;
 						TestTargetID = FD22A1BF2C33801700763C01;
 					};
 					FD22A1D92C33801900763C01 = {
@@ -216,6 +301,9 @@
 				Base,
 			);
 			mainGroup = FD22A1B72C33801700763C01;
+			packageReferences = (
+				FD789BA52C34F0AB008A759D /* XCRemoteSwiftPackageReference "realm-swift" */,
+			);
 			productRefGroup = FD22A1C12C33801700763C01 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -241,6 +329,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FD789BBB2C34FF89008A759D /* PexelsSampleResponse.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -280,8 +369,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FD789BA92C34F3B6008A759D /* PexelsService.swift in Sources */,
+				FD789BAB2C34F4A3008A759D /* Video.swift in Sources */,
 				FD22A1C62C33801700763C01 /* ContentView.swift in Sources */,
 				FD22A1C42C33801700763C01 /* pexels_testApp.swift in Sources */,
+				FD789BAD2C34F4DF008A759D /* VideoObject.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -289,7 +381,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FD22A1D52C33801900763C01 /* pexels_testTests.swift in Sources */,
+				FD789BB42C34F7B9008A759D /* PexelsServiceTests.swift in Sources */,
+				FD789BB72C34FE90008A759D /* Utils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -514,6 +607,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -522,6 +616,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.cucobein.pexels-testTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/pexels-test.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/pexels-test";
@@ -533,6 +628,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -623,6 +719,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		FD789BA52C34F0AB008A759D /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.52.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		FD789BAF2C34F4F8008A759D /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FD789BA52C34F0AB008A759D /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = FD22A1B82C33801700763C01 /* Project object */;
 }
