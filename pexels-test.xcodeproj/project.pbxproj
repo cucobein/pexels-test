@@ -25,6 +25,10 @@
 		FD789BD02C35096A008A759D /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = FD789BCF2C35096A008A759D /* RealmSwift */; };
 		FD789BD12C35096A008A759D /* RealmSwift in Embed Frameworks */ = {isa = PBXBuildFile; productRef = FD789BCF2C35096A008A759D /* RealmSwift */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		FD789BD42C350C3D008A759D /* pexels_testUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD789BD32C350C3D008A759D /* pexels_testUITests.swift */; };
+		FD789BDA2C35108E008A759D /* VideoListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD789BD92C35108E008A759D /* VideoListViewModel.swift */; };
+		FD789BDC2C35147B008A759D /* MockPexelsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD789BDB2C35147B008A759D /* MockPexelsService.swift */; };
+		FD789BDE2C351714008A759D /* Secrets.plist in Resources */ = {isa = PBXBuildFile; fileRef = FD789BDD2C351714008A759D /* Secrets.plist */; };
+		FD789BE02C351797008A759D /* VideoListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD789BDF2C351797008A759D /* VideoListViewModelTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +91,10 @@
 		FD789BC22C3506A3008A759D /* MockVideoRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockVideoRepository.swift; sourceTree = "<group>"; };
 		FD789BCD2C3508A5008A759D /* VideoRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoRepositoryTests.swift; sourceTree = "<group>"; };
 		FD789BD32C350C3D008A759D /* pexels_testUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pexels_testUITests.swift; sourceTree = "<group>"; };
+		FD789BD92C35108E008A759D /* VideoListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoListViewModel.swift; sourceTree = "<group>"; };
+		FD789BDB2C35147B008A759D /* MockPexelsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockPexelsService.swift; sourceTree = "<group>"; };
+		FD789BDD2C351714008A759D /* Secrets.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Secrets.plist; sourceTree = SOURCE_ROOT; };
+		FD789BDF2C351797008A759D /* VideoListViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoListViewModelTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,11 +148,13 @@
 		FD22A1C22C33801700763C01 /* pexels-test */ = {
 			isa = PBXGroup;
 			children = (
+				FD789BDD2C351714008A759D /* Secrets.plist */,
+				FD789BD72C35103F008A759D /* App */,
 				FD789BA72C34F386008A759D /* Repository */,
 				FD789BA62C34F380008A759D /* Services */,
-				FD22A1C32C33801700763C01 /* pexels_testApp.swift */,
-				FD22A1C52C33801700763C01 /* ContentView.swift */,
-				FD22A1C72C33801800763C01 /* Assets.xcassets */,
+				FD789BD52C35101E008A759D /* ViewModels */,
+				FD789BD62C351029008A759D /* Views */,
+				FD789BD82C35104B008A759D /* Resources */,
 				FD22A1C92C33801800763C01 /* Preview Content */,
 			);
 			path = "pexels-test";
@@ -166,6 +176,7 @@
 				FD789BB82C34FE9C008A759D /* Mocks */,
 				FD789BB32C34F7B9008A759D /* PexelsServiceTests.swift */,
 				FD789BCD2C3508A5008A759D /* VideoRepositoryTests.swift */,
+				FD789BDF2C351797008A759D /* VideoListViewModelTests.swift */,
 			);
 			path = "pexels-testTests";
 			sourceTree = "<group>";
@@ -215,6 +226,7 @@
 			isa = PBXGroup;
 			children = (
 				FD789BC22C3506A3008A759D /* MockVideoRepository.swift */,
+				FD789BDB2C35147B008A759D /* MockPexelsService.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -225,6 +237,38 @@
 				FD789BBA2C34FF89008A759D /* PexelsSampleResponse.json */,
 			);
 			path = JSON;
+			sourceTree = "<group>";
+		};
+		FD789BD52C35101E008A759D /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				FD789BD92C35108E008A759D /* VideoListViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		FD789BD62C351029008A759D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				FD22A1C52C33801700763C01 /* ContentView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		FD789BD72C35103F008A759D /* App */ = {
+			isa = PBXGroup;
+			children = (
+				FD22A1C32C33801700763C01 /* pexels_testApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		FD789BD82C35104B008A759D /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				FD22A1C72C33801800763C01 /* Assets.xcassets */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -346,6 +390,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FD22A1CB2C33801800763C01 /* Preview Assets.xcassets in Resources */,
+				FD789BDE2C351714008A759D /* Secrets.plist in Resources */,
 				FD22A1C82C33801800763C01 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -397,6 +442,7 @@
 				FD789BA92C34F3B6008A759D /* PexelsService.swift in Sources */,
 				FD789BAB2C34F4A3008A759D /* Video.swift in Sources */,
 				FD22A1C62C33801700763C01 /* ContentView.swift in Sources */,
+				FD789BDA2C35108E008A759D /* VideoListViewModel.swift in Sources */,
 				FD789BC02C3503EF008A759D /* VideoRepository.swift in Sources */,
 				FD22A1C42C33801700763C01 /* pexels_testApp.swift in Sources */,
 				FD789BAD2C34F4DF008A759D /* VideoObject.swift in Sources */,
@@ -409,7 +455,9 @@
 			files = (
 				FD789BC32C3506A3008A759D /* MockVideoRepository.swift in Sources */,
 				FD789BB42C34F7B9008A759D /* PexelsServiceTests.swift in Sources */,
+				FD789BE02C351797008A759D /* VideoListViewModelTests.swift in Sources */,
 				FD789BB72C34FE90008A759D /* Utils.swift in Sources */,
+				FD789BDC2C35147B008A759D /* MockPexelsService.swift in Sources */,
 				FD789BCE2C3508A5008A759D /* VideoRepositoryTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

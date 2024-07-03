@@ -6,9 +6,22 @@
 //
 
 import XCTest
+import Combine
 @testable import pexels_test
 
 class PexelsServiceTests: XCTestCase {
+    var cancellables: Set<AnyCancellable>!
+
+    override func setUp() {
+        super.setUp()
+        cancellables = []
+    }
+
+    override func tearDown() {
+        cancellables = nil
+        super.tearDown()
+    }
+
     func testSearchVideos() async throws {
         guard let jsonData = Utils.loadJSONFromFile("PexelsSampleResponse") else {
             XCTFail("JSON file cannot be loaded.")
@@ -23,9 +36,22 @@ class PexelsServiceTests: XCTestCase {
 
     func testSearchVideosIntegration() async throws {
         let service = PexelsService()
+        let expectation = XCTestExpectation(description: "Fetch videos from Pexels API")
 
-        let videos = try await service.searchVideos(query: "nature")
+        var fetchedVideos: [Video] = []
 
-        XCTAssertFalse(videos.isEmpty)
+        service.searchVideos(query: "nature")
+            .sink(receiveCompletion: { completion in
+                if case .failure(let error) = completion {
+                    XCTFail("Error fetching videos: \(error)")
+                }
+            }, receiveValue: { videos in
+                fetchedVideos = videos
+                expectation.fulfill()
+            })
+            .store(in: &cancellables)
+
+        await fulfillment(of: [expectation], timeout: 10.0)
+        XCTAssertFalse(fetchedVideos.isEmpty)
     }
 }
