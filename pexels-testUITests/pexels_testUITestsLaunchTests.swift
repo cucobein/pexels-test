@@ -7,8 +7,8 @@
 
 import XCTest
 
-final class pexels_testUITestsLaunchTests: XCTestCase {
-
+// swiftlint:disable type_name
+class pexels_testUITestsLaunchTests: XCTestCase {
     override class var runsForEachTargetApplicationUIConfiguration: Bool {
         true
     }
