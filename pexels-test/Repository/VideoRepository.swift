@@ -8,7 +8,7 @@
 import RealmSwift
 
 protocol VideoRepositoryProtocol {
-    func save(videos: [Video])
+    func save(videos: [Video]) throws
     func fetchVideos() -> [VideoObject]
 }
 
@@ -19,7 +19,7 @@ class VideoRepository: VideoRepositoryProtocol {
         self.realm = realm
     }
 
-    func save(videos: [Video]) {
+    func save(videos: [Video]) throws {
         do {
             try realm.write {
                 let videoObjects = videos.map { video -> VideoObject in
@@ -28,7 +28,7 @@ class VideoRepository: VideoRepositoryProtocol {
                 realm.add(videoObjects, update: .modified)
             }
         } catch {
-            print("Error saving videos to Realm: \(error.localizedDescription)")
+            throw error
         }
     }
 

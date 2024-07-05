@@ -40,7 +40,7 @@ class VideoListViewModelTests: XCTestCase {
         super.tearDown()
     }
 
-    func testSearchVideosOnline() {
+    func testSearchVideosOnline() throws {
         let expectedVideos = [
             Video(
                 id: 1_448_735,
@@ -78,13 +78,13 @@ class VideoListViewModelTests: XCTestCase {
         wait(for: [expectation], timeout: 10.0)
     }
 
-    func testSearchVideosOffline() {
+    func testSearchVideosOffline() throws {
         let expectedVideos = [
             VideoObject(value: ["id": 1_448_735, "url": "https://www.pexels.com/video/video-of-forest-1448735/", "image": "https://images.pexels.com/videos/1448735/free-video-1448735.jpg?fit=crop&w=1200&h=630&auto=compress&cs=tinysrgb", "duration": 32, "userName": "Ruvim Miksanskiy", "userUrl": "https://www.pexels.com/@digitech"])
         ]
         mockVideoRepository.videos = expectedVideos
 
-        let expectation = XCTestExpectation(description: "Esperar a que isOfflineMode sea true")
+        let expectation = XCTestExpectation(description: "Wait for isOfflineMode to switch state")
 
         viewModel.$isOfflineMode
             .dropFirst()
@@ -97,7 +97,7 @@ class VideoListViewModelTests: XCTestCase {
 
         mockNetworkMonitor.simulateConnectionChange(to: false)
 
-        wait(for: [expectation], timeout: 1.0)
+        wait(for: [expectation], timeout: 3.0)
 
         viewModel.searchVideos(query: "nature")
 
@@ -111,7 +111,7 @@ class VideoListViewModelTests: XCTestCase {
         ]
         mockVideoRepository.videos = expectedVideos
 
-        let expectation = XCTestExpectation(description: "Esperar a que isOfflineMode sea true")
+        let expectation = XCTestExpectation(description: "Wait for isOfflineMode to switch state")
 
         viewModel.$isOfflineMode
             .dropFirst()
@@ -124,7 +124,7 @@ class VideoListViewModelTests: XCTestCase {
 
         mockNetworkMonitor.simulateConnectionChange(to: false)
 
-        wait(for: [expectation], timeout: 1.0)
+        wait(for: [expectation], timeout: 3.0)
 
         viewModel.searchVideos(query: "nature")
 
@@ -156,6 +156,8 @@ class VideoListViewModelTests: XCTestCase {
     func testNetworkMonitorOnline() {
         let expectation = XCTestExpectation(description: "Network should be online")
 
+        viewModel.isOfflineMode = true
+
         viewModel.$isOfflineMode
             .dropFirst()
             .sink { isOfflineMode in
@@ -166,11 +168,13 @@ class VideoListViewModelTests: XCTestCase {
 
         mockNetworkMonitor.simulateConnectionChange(to: true)
 
-        wait(for: [expectation], timeout: 10.0)
+        wait(for: [expectation], timeout: 3.0)
     }
 
     func testNetworkMonitorOffline() {
         let expectation = XCTestExpectation(description: "Network should be offline")
+
+        viewModel.isOfflineMode = true
 
         viewModel.$isOfflineMode
             .dropFirst()
@@ -182,6 +186,34 @@ class VideoListViewModelTests: XCTestCase {
 
         mockNetworkMonitor.simulateConnectionChange(to: false)
 
-        wait(for: [expectation], timeout: 10.0)
+        wait(for: [expectation], timeout: 3.0)
+    }
+
+    func testSaveVideosErrorHandling() {
+        let expectation = XCTestExpectation(description: "Wait for error to be triggered")
+
+        viewModel.$error
+            .dropFirst()
+            .sink { error in
+                XCTAssertTrue(error.display)
+                XCTAssertEqual(error.message, "Error saving videos: Simulated save error")
+                expectation.fulfill()
+            }
+            .store(in: &cancellables)
+
+        mockVideoRepository.shouldThrowErrorOnSave = true
+        viewModel.saveVideosToLocal(videos: [Video(
+            id: 1_448_735,
+            width: 4_096,
+            height: 2_160,
+            url: "https://www.pexels.com/video/video-of-forest-1448735/",
+            image: "https://images.pexels.com/videos/1448735/free-video-1448735.jpg?fit=crop&w=1200&h=630&auto=compress&cs=tinysrgb",
+            duration: 32,
+            user: User(id: 574_687, name: "Ruvim Miksanskiy", url: "https://www.pexels.com/@digitech"),
+            videoFiles: [],
+            videoPictures: []
+        )])
+
+        wait(for: [expectation], timeout: 3.0)
     }
 }

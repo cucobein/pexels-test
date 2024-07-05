@@ -10,8 +10,12 @@ import Foundation
 
 class MockVideoRepository: VideoRepositoryProtocol {
     var videos: [VideoObject] = []
+    var shouldThrowErrorOnSave = false
 
-    func save(videos: [Video]) {
+    func save(videos: [Video]) throws {
+        if shouldThrowErrorOnSave {
+            throw NSError(domain: "TestError", code: 1, userInfo: [NSLocalizedDescriptionKey: "Simulated save error"])
+        }
         self.videos = videos.map { video in
             let videoObject = VideoObject()
             videoObject.id = video.id

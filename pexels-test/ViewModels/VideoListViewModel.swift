@@ -12,6 +12,7 @@ import RealmSwift
 class VideoListViewModel: ObservableObject {
     @Published var videos: [Video] = []
     @Published var isOfflineMode: Bool = false
+    @Published var error: (display: Bool, message: String) = (false, "")
 
     private let pexelsService: PexelsServiceProtocol
     private let videoRepository: VideoRepositoryProtocol
@@ -58,8 +59,7 @@ class VideoListViewModel: ObservableObject {
             .receive(on: receiveScheduler)
             .sink(receiveCompletion: { completion in
                 switch completion {
-                case .failure(let error):
-                    print("Error fetching videos: \(error.localizedDescription)")
+                case .failure:
                     self.loadVideosFromLocal()  // fallback to local data if API fails
                 case .finished:
                     break
@@ -103,7 +103,11 @@ class VideoListViewModel: ObservableObject {
         }
     }
 
-    private func saveVideosToLocal(videos: [Video]) {
-        videoRepository.save(videos: videos)
+    func saveVideosToLocal(videos: [Video]) {
+        do {
+            try videoRepository.save(videos: videos)
+        } catch {
+            self.error = (true, "Error saving videos: \(error.localizedDescription)")
+        }
     }
 }

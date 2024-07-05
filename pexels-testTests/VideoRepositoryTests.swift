@@ -27,7 +27,7 @@ class VideoRepositoryTests: XCTestCase {
             let response = try JSONDecoder().decode(VideoResponse.self, from: jsonData)
             let videos = response.videos
 
-            repository.save(videos: videos)
+            try? repository.save(videos: videos)
 
             let fetchedVideos = repository.fetchVideos()
 
