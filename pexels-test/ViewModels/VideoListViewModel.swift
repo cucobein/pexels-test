@@ -13,6 +13,8 @@ class VideoListViewModel: ObservableObject {
     @Published var videos: [Video] = []
     @Published var isOfflineMode: Bool = false
     @Published var error: (display: Bool, message: String) = (false, "")
+    @Published var searchQuery: String = ""
+    @Published var isLoading: Bool = false
 
     private let pexelsService: PexelsServiceProtocol
     private let videoRepository: VideoRepositoryProtocol
@@ -31,19 +33,7 @@ class VideoListViewModel: ObservableObject {
         self.networkMonitor = networkMonitor
         self.receiveScheduler = receiveScheduler
 
-        networkMonitor.isConnectedPublisher
-            .receive(on: receiveScheduler)
-            .sink { [weak self] isConnected in
-                self?.isOfflineMode = !isConnected
-                if isConnected {
-                    self?.loadVideosFromAPI(query: "nature")
-                } else {
-                    self?.loadVideosFromLocal()
-                }
-            }
-            .store(in: &cancellables)
-
-        networkMonitor.startMonitoring()
+        setupBindings()
     }
 
     func searchVideos(query: String) {
@@ -55,12 +45,15 @@ class VideoListViewModel: ObservableObject {
     }
 
     private func loadVideosFromAPI(query: String) {
+        isLoading = true
         pexelsService.searchVideos(query: query)
             .receive(on: receiveScheduler)
             .sink(receiveCompletion: { completion in
+                self.isLoading = false
                 switch completion {
                 case .failure:
-                    self.loadVideosFromLocal()  // fallback to local data if API fails
+                    self.loadVideosFromLocal()
+                    
                 case .finished:
                     break
                 }
@@ -72,6 +65,7 @@ class VideoListViewModel: ObservableObject {
     }
 
     private func loadVideosFromLocal() {
+        isLoading = true
         let videoObjects = videoRepository.fetchVideos()
         self.videos = videoObjects.map { videoObject in
             Video(
@@ -101,6 +95,7 @@ class VideoListViewModel: ObservableObject {
                 }
             )
         }
+        isLoading = false
     }
 
     func saveVideosToLocal(videos: [Video]) {
@@ -109,5 +104,29 @@ class VideoListViewModel: ObservableObject {
         } catch {
             self.error = (true, "Error saving videos: \(error.localizedDescription)")
         }
+    }
+
+    private func setupBindings() {
+        $searchQuery
+            .debounce(for: .milliseconds(500), scheduler: receiveScheduler)
+            .removeDuplicates()
+            .sink { [weak self] query in
+                self?.searchVideos(query: query)
+            }
+            .store(in: &cancellables)
+
+        networkMonitor.isConnectedPublisher
+            .receive(on: receiveScheduler)
+            .sink { [weak self] isConnected in
+                self?.isOfflineMode = !isConnected
+                if isConnected {
+                    self?.loadVideosFromAPI(query: "nature")
+                } else {
+                    self?.loadVideosFromLocal()
+                }
+            }
+            .store(in: &cancellables)
+
+        networkMonitor.startMonitoring()
     }
 }

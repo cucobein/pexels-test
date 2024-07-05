@@ -24,7 +24,7 @@
 		FD789BCE2C3508A5008A759D /* VideoRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD789BCD2C3508A5008A759D /* VideoRepositoryTests.swift */; };
 		FD789BD02C35096A008A759D /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = FD789BCF2C35096A008A759D /* RealmSwift */; };
 		FD789BD12C35096A008A759D /* RealmSwift in Embed Frameworks */ = {isa = PBXBuildFile; productRef = FD789BCF2C35096A008A759D /* RealmSwift */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		FD789BD42C350C3D008A759D /* pexels_testUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD789BD32C350C3D008A759D /* pexels_testUITests.swift */; };
+		FD789BD42C350C3D008A759D /* PexelsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD789BD32C350C3D008A759D /* PexelsUITests.swift */; };
 		FD789BDA2C35108E008A759D /* VideoListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD789BD92C35108E008A759D /* VideoListViewModel.swift */; };
 		FD789BDC2C35147B008A759D /* MockPexelsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD789BDB2C35147B008A759D /* MockPexelsService.swift */; };
 		FD789BDE2C351714008A759D /* Secrets.plist in Resources */ = {isa = PBXBuildFile; fileRef = FD789BDD2C351714008A759D /* Secrets.plist */; };
@@ -32,6 +32,10 @@
 		FD7F19242C37686C0058085A /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD7F19232C37686C0058085A /* NetworkMonitor.swift */; };
 		FD7F19262C3768A20058085A /* MockNetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD7F19252C3768A20058085A /* MockNetworkMonitor.swift */; };
 		FD7F19282C376B100058085A /* NetworkMonitorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD7F19272C376B100058085A /* NetworkMonitorTests.swift */; };
+		FD7F192A2C37A4DC0058085A /* VideoListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD7F19292C37A4DC0058085A /* VideoListView.swift */; };
+		FD7F192C2C37A8FE0058085A /* VideoListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD7F192B2C37A8FE0058085A /* VideoListCell.swift */; };
+		FD7F192F2C37AF390058085A /* XCUIElement+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD7F192E2C37AF390058085A /* XCUIElement+Extensions.swift */; };
+		FD7F19322C37B7260058085A /* Int+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD7F19312C37B7260058085A /* Int+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,7 +97,7 @@
 		FD789BBF2C3503EF008A759D /* VideoRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoRepository.swift; sourceTree = "<group>"; };
 		FD789BC22C3506A3008A759D /* MockVideoRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockVideoRepository.swift; sourceTree = "<group>"; };
 		FD789BCD2C3508A5008A759D /* VideoRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoRepositoryTests.swift; sourceTree = "<group>"; };
-		FD789BD32C350C3D008A759D /* pexels_testUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pexels_testUITests.swift; sourceTree = "<group>"; };
+		FD789BD32C350C3D008A759D /* PexelsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PexelsUITests.swift; sourceTree = "<group>"; };
 		FD789BD92C35108E008A759D /* VideoListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoListViewModel.swift; sourceTree = "<group>"; };
 		FD789BDB2C35147B008A759D /* MockPexelsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockPexelsService.swift; sourceTree = "<group>"; };
 		FD789BDD2C351714008A759D /* Secrets.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Secrets.plist; sourceTree = SOURCE_ROOT; };
@@ -101,6 +105,10 @@
 		FD7F19232C37686C0058085A /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
 		FD7F19252C3768A20058085A /* MockNetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNetworkMonitor.swift; sourceTree = "<group>"; };
 		FD7F19272C376B100058085A /* NetworkMonitorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitorTests.swift; sourceTree = "<group>"; };
+		FD7F19292C37A4DC0058085A /* VideoListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoListView.swift; sourceTree = "<group>"; };
+		FD7F192B2C37A8FE0058085A /* VideoListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoListCell.swift; sourceTree = "<group>"; };
+		FD7F192E2C37AF390058085A /* XCUIElement+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCUIElement+Extensions.swift"; sourceTree = "<group>"; };
+		FD7F19312C37B7260058085A /* Int+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,6 +163,7 @@
 			isa = PBXGroup;
 			children = (
 				FD789BDD2C351714008A759D /* Secrets.plist */,
+				FD7F19302C37B7120058085A /* Extensions */,
 				FD789BD72C35103F008A759D /* App */,
 				FD789BA72C34F386008A759D /* Repository */,
 				FD789BA62C34F380008A759D /* Services */,
@@ -192,7 +201,8 @@
 		FD22A1DD2C33801900763C01 /* pexels-testUITests */ = {
 			isa = PBXGroup;
 			children = (
-				FD789BD32C350C3D008A759D /* pexels_testUITests.swift */,
+				FD7F192D2C37AF240058085A /* Extensions */,
+				FD789BD32C350C3D008A759D /* PexelsUITests.swift */,
 			);
 			path = "pexels-testUITests";
 			sourceTree = "<group>";
@@ -260,6 +270,8 @@
 			isa = PBXGroup;
 			children = (
 				FD22A1C52C33801700763C01 /* ContentView.swift */,
+				FD7F19292C37A4DC0058085A /* VideoListView.swift */,
+				FD7F192B2C37A8FE0058085A /* VideoListCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -294,6 +306,22 @@
 				FD7F19232C37686C0058085A /* NetworkMonitor.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		FD7F192D2C37AF240058085A /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				FD7F192E2C37AF390058085A /* XCUIElement+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		FD7F19302C37B7120058085A /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				FD7F19312C37B7260058085A /* Int+Extensions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -467,8 +495,11 @@
 				FD789BA92C34F3B6008A759D /* PexelsService.swift in Sources */,
 				FD7F19242C37686C0058085A /* NetworkMonitor.swift in Sources */,
 				FD789BAB2C34F4A3008A759D /* Video.swift in Sources */,
+				FD7F192C2C37A8FE0058085A /* VideoListCell.swift in Sources */,
 				FD22A1C62C33801700763C01 /* ContentView.swift in Sources */,
 				FD789BDA2C35108E008A759D /* VideoListViewModel.swift in Sources */,
+				FD7F192A2C37A4DC0058085A /* VideoListView.swift in Sources */,
+				FD7F19322C37B7260058085A /* Int+Extensions.swift in Sources */,
 				FD789BC02C3503EF008A759D /* VideoRepository.swift in Sources */,
 				FD22A1C42C33801700763C01 /* pexels_testApp.swift in Sources */,
 				FD789BAD2C34F4DF008A759D /* VideoObject.swift in Sources */,
@@ -494,7 +525,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FD789BD42C350C3D008A759D /* pexels_testUITests.swift in Sources */,
+				FD789BD42C350C3D008A759D /* PexelsUITests.swift in Sources */,
+				FD7F192F2C37AF390058085A /* XCUIElement+Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -648,8 +680,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -665,7 +696,7 @@
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -684,8 +715,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -701,7 +731,7 @@
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
