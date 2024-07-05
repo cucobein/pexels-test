@@ -29,6 +29,9 @@
 		FD789BDC2C35147B008A759D /* MockPexelsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD789BDB2C35147B008A759D /* MockPexelsService.swift */; };
 		FD789BDE2C351714008A759D /* Secrets.plist in Resources */ = {isa = PBXBuildFile; fileRef = FD789BDD2C351714008A759D /* Secrets.plist */; };
 		FD789BE02C351797008A759D /* VideoListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD789BDF2C351797008A759D /* VideoListViewModelTests.swift */; };
+		FD7F19242C37686C0058085A /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD7F19232C37686C0058085A /* NetworkMonitor.swift */; };
+		FD7F19262C3768A20058085A /* MockNetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD7F19252C3768A20058085A /* MockNetworkMonitor.swift */; };
+		FD7F19282C376B100058085A /* NetworkMonitorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD7F19272C376B100058085A /* NetworkMonitorTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,6 +98,9 @@
 		FD789BDB2C35147B008A759D /* MockPexelsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockPexelsService.swift; sourceTree = "<group>"; };
 		FD789BDD2C351714008A759D /* Secrets.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Secrets.plist; sourceTree = SOURCE_ROOT; };
 		FD789BDF2C351797008A759D /* VideoListViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoListViewModelTests.swift; sourceTree = "<group>"; };
+		FD7F19232C37686C0058085A /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
+		FD7F19252C3768A20058085A /* MockNetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNetworkMonitor.swift; sourceTree = "<group>"; };
+		FD7F19272C376B100058085A /* NetworkMonitorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitorTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,6 +160,7 @@
 				FD789BA62C34F380008A759D /* Services */,
 				FD789BD52C35101E008A759D /* ViewModels */,
 				FD789BD62C351029008A759D /* Views */,
+				FD7F19222C3768550058085A /* Utils */,
 				FD789BD82C35104B008A759D /* Resources */,
 				FD22A1C92C33801800763C01 /* Preview Content */,
 			);
@@ -177,6 +184,7 @@
 				FD789BB32C34F7B9008A759D /* PexelsServiceTests.swift */,
 				FD789BCD2C3508A5008A759D /* VideoRepositoryTests.swift */,
 				FD789BDF2C351797008A759D /* VideoListViewModelTests.swift */,
+				FD7F19272C376B100058085A /* NetworkMonitorTests.swift */,
 			);
 			path = "pexels-testTests";
 			sourceTree = "<group>";
@@ -192,8 +200,8 @@
 		FD789BA62C34F380008A759D /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				FD7F19212C3767C30058085A /* Entities */,
 				FD789BA82C34F3B6008A759D /* PexelsService.swift */,
-				FD789BAA2C34F4A3008A759D /* Video.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -227,6 +235,7 @@
 			children = (
 				FD789BC22C3506A3008A759D /* MockVideoRepository.swift */,
 				FD789BDB2C35147B008A759D /* MockPexelsService.swift */,
+				FD7F19252C3768A20058085A /* MockNetworkMonitor.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -269,6 +278,22 @@
 				FD22A1C72C33801800763C01 /* Assets.xcassets */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		FD7F19212C3767C30058085A /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				FD789BAA2C34F4A3008A759D /* Video.swift */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		FD7F19222C3768550058085A /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				FD7F19232C37686C0058085A /* NetworkMonitor.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -440,6 +465,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FD789BA92C34F3B6008A759D /* PexelsService.swift in Sources */,
+				FD7F19242C37686C0058085A /* NetworkMonitor.swift in Sources */,
 				FD789BAB2C34F4A3008A759D /* Video.swift in Sources */,
 				FD22A1C62C33801700763C01 /* ContentView.swift in Sources */,
 				FD789BDA2C35108E008A759D /* VideoListViewModel.swift in Sources */,
@@ -454,7 +480,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				FD789BC32C3506A3008A759D /* MockVideoRepository.swift in Sources */,
+				FD7F19282C376B100058085A /* NetworkMonitorTests.swift in Sources */,
 				FD789BB42C34F7B9008A759D /* PexelsServiceTests.swift in Sources */,
+				FD7F19262C3768A20058085A /* MockNetworkMonitor.swift in Sources */,
 				FD789BE02C351797008A759D /* VideoListViewModelTests.swift in Sources */,
 				FD789BB72C34FE90008A759D /* Utils.swift in Sources */,
 				FD789BDC2C35147B008A759D /* MockPexelsService.swift in Sources */,

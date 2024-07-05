@@ -5,7 +5,6 @@
 //  Created by Hugo Ramirez on 02/07/24.
 //
 
-@testable import pexels_test
 import RealmSwift
 
 protocol VideoRepositoryProtocol {

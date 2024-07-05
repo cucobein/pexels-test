@@ -14,13 +14,20 @@ class VideoListViewModelTests: XCTestCase {
     var viewModel: VideoListViewModel!
     var mockPexelsService: MockPexelsService!
     var mockVideoRepository: MockVideoRepository!
+    var mockNetworkMonitor: MockNetworkMonitor!
     var cancellables: Set<AnyCancellable>!
 
     override func setUp() {
         super.setUp()
         mockPexelsService = MockPexelsService()
         mockVideoRepository = MockVideoRepository()
-        viewModel = VideoListViewModel(pexelsService: mockPexelsService, videoRepository: mockVideoRepository)
+        mockNetworkMonitor = MockNetworkMonitor()
+        viewModel = VideoListViewModel(
+            pexelsService: mockPexelsService,
+            videoRepository: mockVideoRepository,
+            networkMonitor: mockNetworkMonitor,
+            receiveScheduler: DispatchQueue.global()
+        )
         cancellables = []
     }
 
@@ -28,6 +35,7 @@ class VideoListViewModelTests: XCTestCase {
         viewModel = nil
         mockPexelsService = nil
         mockVideoRepository = nil
+        mockNetworkMonitor = nil
         cancellables = nil
         super.tearDown()
     }
@@ -51,7 +59,7 @@ class VideoListViewModelTests: XCTestCase {
             )
         ]
         mockPexelsService.videos = expectedVideos
-        viewModel.isOfflineMode = false
+        mockNetworkMonitor.simulateConnectionChange(to: true)
 
         let expectation = XCTestExpectation(description: "Fetch videos from API")
 
@@ -75,7 +83,21 @@ class VideoListViewModelTests: XCTestCase {
             VideoObject(value: ["id": 1_448_735, "url": "https://www.pexels.com/video/video-of-forest-1448735/", "image": "https://images.pexels.com/videos/1448735/free-video-1448735.jpg?fit=crop&w=1200&h=630&auto=compress&cs=tinysrgb", "duration": 32, "userName": "Ruvim Miksanskiy", "userUrl": "https://www.pexels.com/@digitech"])
         ]
         mockVideoRepository.videos = expectedVideos
-        viewModel.isOfflineMode = true
+
+        let expectation = XCTestExpectation(description: "Esperar a que isOfflineMode sea true")
+
+        viewModel.$isOfflineMode
+            .dropFirst()
+            .sink { isOfflineMode in
+                if isOfflineMode {
+                    expectation.fulfill()
+                }
+            }
+            .store(in: &cancellables)
+
+        mockNetworkMonitor.simulateConnectionChange(to: false)
+
+        wait(for: [expectation], timeout: 1.0)
 
         viewModel.searchVideos(query: "nature")
 
@@ -89,7 +111,21 @@ class VideoListViewModelTests: XCTestCase {
         ]
         mockVideoRepository.videos = expectedVideos
 
-        viewModel.isOfflineMode = true
+        let expectation = XCTestExpectation(description: "Esperar a que isOfflineMode sea true")
+
+        viewModel.$isOfflineMode
+            .dropFirst()
+            .sink { isOfflineMode in
+                if isOfflineMode {
+                    expectation.fulfill()
+                }
+            }
+            .store(in: &cancellables)
+
+        mockNetworkMonitor.simulateConnectionChange(to: false)
+
+        wait(for: [expectation], timeout: 1.0)
+
         viewModel.searchVideos(query: "nature")
 
         XCTAssertEqual(viewModel.videos.count, 1)
@@ -115,5 +151,37 @@ class VideoListViewModelTests: XCTestCase {
 
         await fulfillment(of: [expectation], timeout: 10.0)
         XCTAssertFalse(fetchedVideos.isEmpty)
+    }
+
+    func testNetworkMonitorOnline() {
+        let expectation = XCTestExpectation(description: "Network should be online")
+
+        viewModel.$isOfflineMode
+            .dropFirst()
+            .sink { isOfflineMode in
+                XCTAssertFalse(isOfflineMode)
+                expectation.fulfill()
+            }
+            .store(in: &cancellables)
+
+        mockNetworkMonitor.simulateConnectionChange(to: true)
+
+        wait(for: [expectation], timeout: 10.0)
+    }
+
+    func testNetworkMonitorOffline() {
+        let expectation = XCTestExpectation(description: "Network should be offline")
+
+        viewModel.$isOfflineMode
+            .dropFirst()
+            .sink { isOfflineMode in
+                XCTAssertTrue(isOfflineMode)
+                expectation.fulfill()
+            }
+            .store(in: &cancellables)
+
+        mockNetworkMonitor.simulateConnectionChange(to: false)
+
+        wait(for: [expectation], timeout: 10.0)
     }
 }

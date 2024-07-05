@@ -15,12 +15,34 @@ class VideoListViewModel: ObservableObject {
 
     private let pexelsService: PexelsServiceProtocol
     private let videoRepository: VideoRepositoryProtocol
+    private let networkMonitor: NetworkMonitorProtocol
     private var cancellables = Set<AnyCancellable>()
+    private let receiveScheduler: DispatchQueue
 
-    init(pexelsService: PexelsServiceProtocol, videoRepository: VideoRepositoryProtocol) {
+    init(
+        pexelsService: PexelsServiceProtocol,
+        videoRepository: VideoRepositoryProtocol,
+        networkMonitor: NetworkMonitorProtocol = NetworkMonitor(),
+        receiveScheduler: DispatchQueue = .main
+    ) {
         self.pexelsService = pexelsService
         self.videoRepository = videoRepository
-        self.isOfflineMode = !isConnectedToInternet()
+        self.networkMonitor = networkMonitor
+        self.receiveScheduler = receiveScheduler
+
+        networkMonitor.isConnectedPublisher
+            .receive(on: receiveScheduler)
+            .sink { [weak self] isConnected in
+                self?.isOfflineMode = !isConnected
+                if isConnected {
+                    self?.loadVideosFromAPI(query: "nature")
+                } else {
+                    self?.loadVideosFromLocal()
+                }
+            }
+            .store(in: &cancellables)
+
+        networkMonitor.startMonitoring()
     }
 
     func searchVideos(query: String) {
@@ -33,7 +55,7 @@ class VideoListViewModel: ObservableObject {
 
     private func loadVideosFromAPI(query: String) {
         pexelsService.searchVideos(query: query)
-            .receive(on: DispatchQueue.main)
+            .receive(on: receiveScheduler)
             .sink(receiveCompletion: { completion in
                 switch completion {
                 case .failure(let error):
@@ -83,10 +105,5 @@ class VideoListViewModel: ObservableObject {
 
     private func saveVideosToLocal(videos: [Video]) {
         videoRepository.save(videos: videos)
-    }
-
-    private func isConnectedToInternet() -> Bool {
-        // TODO: Implement network reachability check
-        true
     }
 }
