@@ -50,7 +50,7 @@ class PexelsUITests: XCTestCase {
         searchField.clearText()
         searchField.typeText("ASDFnonexistentqueryWXYZ")
 
-        let noVideosLabel = app.staticTexts["No videos found"]
-        XCTAssertTrue(noVideosLabel.waitForExistence(timeout: 10.0), "List should display empty state")
+        let noVideosText = app.staticTexts["NoVideosFound"]
+        XCTAssertTrue(noVideosText.waitForExistence(timeout: 10.0), "List should display empty state")
     }
 }

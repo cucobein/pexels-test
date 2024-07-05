@@ -5,56 +5,98 @@
 //  Created by Hugo Ramirez on 02/07/24.
 //
 
-@testable import pexels_test
 import XCTest
+import RealmSwift
+@testable import pexels_test
 
 // swiftlint:disable line_length
+// swiftlint:disable force_try
 class VideoRepositoryTests: XCTestCase {
-    var repository: VideoRepositoryProtocol!
+    var repository: VideoRepository!
+    var realm: Realm!
 
     override func setUp() {
         super.setUp()
-        repository = MockVideoRepository()
+        var config = Realm.Configuration()
+        config.inMemoryIdentifier = "TestRealm"
+        realm = try! Realm(configuration: config)
+        repository = VideoRepository(realm: realm)
+    }
+
+    override func tearDown() {
+        try! realm.write {
+            realm.deleteAll()
+        }
+        realm = nil
+        repository = nil
+        super.tearDown()
     }
 
     func testSaveAndFetchVideos() {
-        guard let jsonData = Utils.loadJSONFromFile("PexelsSampleResponse") else {
-            XCTFail("JSON file cannot be loaded.")
-            return
-        }
+        let videos = [
+            Video(
+                id: 1_448_735,
+                width: 4_096,
+                height: 2_160,
+                url: "https://www.pexels.com/video/video-of-forest-1448735/",
+                image: "https://images.pexels.com/videos/1448735/free-video-1448735.jpg?fit=crop&w=1200&h=630&auto=compress&cs=tinysrgb",
+                duration: 32,
+                user: User(id: 574_687, name: "Ruvim Miksanskiy", url: "https://www.pexels.com/@digitech"),
+                videoFiles: [VideoFile(id: 58_649, quality: "sd", fileType: "video/mp4", width: 640, height: 338, link: "https://player.vimeo.com/external/291648067.sd.mp4?s=7f9ee1f8ec1e5376027e4a6d1d05d5738b2fbb29&profile_id=164&oauth2_token_id=57447761")],
+                videoPictures: [VideoPicture(id: 133_236, picture: "https://static-videos.pexels.com/videos/1_448_735/pictures/preview-0.jpg", nr: 0)]
+            )
+        ]
 
-        do {
-            let response = try JSONDecoder().decode(VideoResponse.self, from: jsonData)
-            let videos = response.videos
+        XCTAssertNoThrow(try repository.save(videos: videos, searchTerm: "nature"))
 
-            try? repository.save(videos: videos)
+        let fetchedVideos = repository.fetchVideos(for: "nature")
+        XCTAssertEqual(fetchedVideos.count, 1)
+        XCTAssertEqual(fetchedVideos[0].id, 1_448_735)
+    }
 
-            let fetchedVideos = repository.fetchVideos()
+    func testDeleteVideosForSearchTerm() {
+        let natureVideos = [
+            Video(
+                id: 1_448_735,
+                width: 4_096,
+                height: 2_160,
+                url: "https://www.pexels.com/video/video-of-forest-1448735/",
+                image: "https://images.pexels.com/videos/1448735/free-video-1448735.jpg?fit=crop&w=1200&h=630&auto=compress&cs=tinysrgb",
+                duration: 32,
+                user: User(id: 574_687, name: "Ruvim Miksanskiy", url: "https://www.pexels.com/@digitech"),
+                videoFiles: [VideoFile(id: 58_649, quality: "sd", fileType: "video/mp4", width: 640, height: 338, link: "https://player.vimeo.com/external/291648067.sd.mp4?s=7f9ee1f8ec1e5376027e4a6d1d05d5738b2fbb29&profile_id=164&oauth2_token_id=57447761")],
+                videoPictures: [VideoPicture(id: 133_236, picture: "https://static-videos.pexels.com/videos/1_448_735/pictures/preview-0.jpg", nr: 0)]
+            )
+        ]
 
-            XCTAssertEqual(fetchedVideos.count, 1)
-            XCTAssertEqual(fetchedVideos.first?.id, 1_448_735)
-            XCTAssertEqual(fetchedVideos.first?.width, 4_096)
-            XCTAssertEqual(fetchedVideos.first?.height, 2_160)
-            XCTAssertEqual(fetchedVideos.first?.url, "https://www.pexels.com/video/video-of-forest-1448735/")
-            XCTAssertEqual(fetchedVideos.first?.image, "https://images.pexels.com/videos/1448735/free-video-1448735.jpg?fit=crop&w=1200&h=630&auto=compress&cs=tinysrgb")
-            XCTAssertEqual(fetchedVideos.first?.duration, 32)
-            XCTAssertEqual(fetchedVideos.first?.userName, "Ruvim Miksanskiy")
-            XCTAssertEqual(fetchedVideos.first?.userUrl, "https://www.pexels.com/@digitech")
+        let mountainVideos = [
+            Video(
+                id: 1_448_736,
+                width: 4_096,
+                height: 2_160,
+                url: "https://www.pexels.com/video/video-of-forest-1448735/",
+                image: "https://images.pexels.com/videos/1448735/free-video-1448735.jpg?fit=crop&w=1200&h=630&auto=compress&cs=tinysrgb",
+                duration: 32,
+                user: User(id: 574_687, name: "Ruvim Miksanskiy", url: "https://www.pexels.com/@digitech"),
+                videoFiles: [VideoFile(id: 58_649, quality: "sd", fileType: "video/mp4", width: 640, height: 338, link: "https://player.vimeo.com/external/291648067.sd.mp4?s=7f9ee1f8ec1e5376027e4a6d1d05d5738b2fbb29&profile_id=164&oauth2_token_id=57447761")],
+                videoPictures: [VideoPicture(id: 133_236, picture: "https://static-videos.pexels.com/videos/1_448_735/pictures/preview-0.jpg", nr: 0)]
+            )
+        ]
 
-            XCTAssertEqual(fetchedVideos.first?.videoFiles.count, 7)
-            XCTAssertEqual(fetchedVideos.first?.videoFiles.first?.id, 58_649)
-            XCTAssertEqual(fetchedVideos.first?.videoFiles.first?.quality, "sd")
-            XCTAssertEqual(fetchedVideos.first?.videoFiles.first?.fileType, "video/mp4")
-            XCTAssertEqual(fetchedVideos.first?.videoFiles.first?.width, 640)
-            XCTAssertEqual(fetchedVideos.first?.videoFiles.first?.height, 338)
-            XCTAssertEqual(fetchedVideos.first?.videoFiles.first?.link, "https://player.vimeo.com/external/291648067.sd.mp4?s=7f9ee1f8ec1e5376027e4a6d1d05d5738b2fbb29&profile_id=164&oauth2_token_id=57447761")
+        XCTAssertNoThrow(try repository.save(videos: natureVideos, searchTerm: "nature"))
+        XCTAssertNoThrow(try repository.save(videos: mountainVideos, searchTerm: "mountains"))
 
-            XCTAssertEqual(fetchedVideos.first?.videoPictures.count, 15)
-            XCTAssertEqual(fetchedVideos.first?.videoPictures.first?.id, 133_236)
-            XCTAssertEqual(fetchedVideos.first?.videoPictures.first?.picture, "https://static-videos.pexels.com/videos/1448735/pictures/preview-0.jpg")
-            XCTAssertEqual(fetchedVideos.first?.videoPictures.first?.nr, 0)
-        } catch {
-            XCTFail("Decoding error: \(error.localizedDescription)")
-        }
+        var fetchedVideos = repository.fetchVideos(for: "nature")
+        XCTAssertEqual(fetchedVideos.count, 1)
+
+        fetchedVideos = repository.fetchVideos(for: "mountains")
+        XCTAssertEqual(fetchedVideos.count, 1)
+
+        XCTAssertNoThrow(try repository.save(videos: [], searchTerm: "nature"))
+        fetchedVideos = repository.fetchVideos(for: "nature")
+        XCTAssertEqual(fetchedVideos.count, 0)
+
+        fetchedVideos = repository.fetchVideos(for: "mountains")
+        XCTAssertEqual(fetchedVideos.count, 1)
     }
 }

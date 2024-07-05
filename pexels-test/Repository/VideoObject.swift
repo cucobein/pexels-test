@@ -17,6 +17,7 @@ class VideoObject: Object {
     @objc dynamic var duration: Int = 0
     @objc dynamic var userName: String = ""
     @objc dynamic var userUrl: String = ""
+    @objc dynamic var searchTerm: String = ""
 
     let videoFiles = List<VideoFileObject>()
     let videoPictures = List<VideoPictureObject>()

@@ -8,8 +8,8 @@
 import RealmSwift
 
 protocol VideoRepositoryProtocol {
-    func save(videos: [Video]) throws
-    func fetchVideos() -> [VideoObject]
+    func save(videos: [Video], searchTerm: String) throws
+    func fetchVideos(for searchTerm: String) -> [VideoObject]
 }
 
 class VideoRepository: VideoRepositoryProtocol {
@@ -19,11 +19,12 @@ class VideoRepository: VideoRepositoryProtocol {
         self.realm = realm
     }
 
-    func save(videos: [Video]) throws {
+    func save(videos: [Video], searchTerm: String) throws {
         do {
             try realm.write {
+                deleteVideos(for: searchTerm)
                 let videoObjects = videos.map { video -> VideoObject in
-                    initializeVideObject(video: video)
+                    initializeVideoObject(video: video, searchTerm: searchTerm)
                 }
                 realm.add(videoObjects, update: .modified)
             }
@@ -32,11 +33,16 @@ class VideoRepository: VideoRepositoryProtocol {
         }
     }
 
-    func fetchVideos() -> [VideoObject] {
-        Array(realm.objects(VideoObject.self))
+    func fetchVideos(for searchTerm: String) -> [VideoObject] {
+        Array(realm.objects(VideoObject.self).filter("searchTerm == %@", searchTerm))
     }
 
-    private func initializeVideObject(video: Video) -> VideoObject {
+    private func deleteVideos(for searchTerm: String) {
+        let videosToDelete = realm.objects(VideoObject.self).filter("searchTerm == %@", searchTerm)
+        realm.delete(videosToDelete)
+    }
+
+    private func initializeVideoObject(video: Video, searchTerm: String) -> VideoObject {
         let videoObject = VideoObject()
         videoObject.id = video.id
         videoObject.width = video.width
@@ -46,6 +52,7 @@ class VideoRepository: VideoRepositoryProtocol {
         videoObject.duration = video.duration
         videoObject.userName = video.user.name
         videoObject.userUrl = video.user.url
+        videoObject.searchTerm = searchTerm
 
         videoObject.videoFiles.append(objectsIn: video.videoFiles.map { videoFile -> VideoFileObject in
             let videoFileObject = VideoFileObject()

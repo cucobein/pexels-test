@@ -38,7 +38,7 @@ class VideoListViewModel: ObservableObject {
 
     func searchVideos(query: String) {
         if isOfflineMode {
-            loadVideosFromLocal()
+            loadVideosFromLocal(query: query)
         } else {
             loadVideosFromAPI(query: query)
         }
@@ -52,21 +52,21 @@ class VideoListViewModel: ObservableObject {
                 self.isLoading = false
                 switch completion {
                 case .failure:
-                    self.loadVideosFromLocal()
-                    
+                    self.loadVideosFromLocal(query: query)
+
                 case .finished:
                     break
                 }
             }, receiveValue: { videos in
                 self.videos = videos
-                self.saveVideosToLocal(videos: videos)
+                self.saveVideosToLocal(videos: videos, query: query)
             })
             .store(in: &cancellables)
     }
 
-    private func loadVideosFromLocal() {
+    private func loadVideosFromLocal(query: String) {
         isLoading = true
-        let videoObjects = videoRepository.fetchVideos()
+        let videoObjects = videoRepository.fetchVideos(for: query)
         self.videos = videoObjects.map { videoObject in
             Video(
                 id: videoObject.id,
@@ -98,9 +98,9 @@ class VideoListViewModel: ObservableObject {
         isLoading = false
     }
 
-    func saveVideosToLocal(videos: [Video]) {
+    func saveVideosToLocal(videos: [Video], query: String) {
         do {
-            try videoRepository.save(videos: videos)
+            try videoRepository.save(videos: videos, searchTerm: query)
         } catch {
             self.error = (true, "Error saving videos: \(error.localizedDescription)")
         }
@@ -122,7 +122,7 @@ class VideoListViewModel: ObservableObject {
                 if isConnected {
                     self?.loadVideosFromAPI(query: "nature")
                 } else {
-                    self?.loadVideosFromLocal()
+                    self?.loadVideosFromLocal(query: "nature")
                 }
             }
             .store(in: &cancellables)
