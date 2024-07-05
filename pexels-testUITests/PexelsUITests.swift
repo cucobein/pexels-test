@@ -53,4 +53,24 @@ class PexelsUITests: XCTestCase {
         let noVideosText = app.staticTexts["NoVideosFound"]
         XCTAssertTrue(noVideosText.waitForExistence(timeout: 10.0), "List should display empty state")
     }
+
+    func testVideoListViewDisplaysDetailView() throws {
+        let app = XCUIApplication()
+        app.launch()
+
+        let searchField = app.textFields["Search..."]
+        searchField.tap()
+        searchField.clearText()
+        searchField.typeText("nature")
+
+        let videoList = app.scrollViews.otherElements["VideoList"]
+        XCTAssertTrue(videoList.waitForExistence(timeout: 20.0))
+
+        let firstVideoCell = videoList.children(matching: .any).firstMatch
+        XCTAssertTrue(firstVideoCell.exists, "The first video cell should exist")
+        firstVideoCell.tap()
+
+        let videoDetailView = app.otherElements["VideoDetailView"]
+        XCTAssertTrue(videoDetailView.waitForExistence(timeout: 10.0), "Video detail view should be displayed")
+    }
 }

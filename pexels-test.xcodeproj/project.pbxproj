@@ -36,6 +36,7 @@
 		FD7F192C2C37A8FE0058085A /* VideoListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD7F192B2C37A8FE0058085A /* VideoListCell.swift */; };
 		FD7F192F2C37AF390058085A /* XCUIElement+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD7F192E2C37AF390058085A /* XCUIElement+Extensions.swift */; };
 		FD7F19322C37B7260058085A /* Int+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD7F19312C37B7260058085A /* Int+Extensions.swift */; };
+		FD8720502C37D648000C1C34 /* VideoDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD87204F2C37D648000C1C34 /* VideoDetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -109,6 +110,7 @@
 		FD7F192B2C37A8FE0058085A /* VideoListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoListCell.swift; sourceTree = "<group>"; };
 		FD7F192E2C37AF390058085A /* XCUIElement+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCUIElement+Extensions.swift"; sourceTree = "<group>"; };
 		FD7F19312C37B7260058085A /* Int+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Extensions.swift"; sourceTree = "<group>"; };
+		FD87204F2C37D648000C1C34 /* VideoDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -272,6 +274,7 @@
 				FD22A1C52C33801700763C01 /* ContentView.swift */,
 				FD7F19292C37A4DC0058085A /* VideoListView.swift */,
 				FD7F192B2C37A8FE0058085A /* VideoListCell.swift */,
+				FD87204F2C37D648000C1C34 /* VideoDetailView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -493,6 +496,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FD789BA92C34F3B6008A759D /* PexelsService.swift in Sources */,
+				FD8720502C37D648000C1C34 /* VideoDetailView.swift in Sources */,
 				FD7F19242C37686C0058085A /* NetworkMonitor.swift in Sources */,
 				FD789BAB2C34F4A3008A759D /* Video.swift in Sources */,
 				FD7F192C2C37A8FE0058085A /* VideoListCell.swift in Sources */,

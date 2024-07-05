@@ -120,9 +120,9 @@ class VideoListViewModel: ObservableObject {
             .sink { [weak self] isConnected in
                 self?.isOfflineMode = !isConnected
                 if isConnected {
-                    self?.loadVideosFromAPI(query: "nature")
+                    self?.loadVideosFromAPI(query: "")
                 } else {
-                    self?.loadVideosFromLocal(query: "nature")
+                    self?.loadVideosFromLocal(query: "")
                 }
             }
             .store(in: &cancellables)

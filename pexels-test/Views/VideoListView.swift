@@ -54,22 +54,24 @@ struct VideoListView: View {
                 ScrollView {
                     LazyVGrid(columns: columns, spacing: 4) {
                         ForEach(viewModel.videos) { video in
-                            VideoListCell(
-                                imageUrl: video.image,
-                                duration: video.duration,
-                                width: video.width,
-                                height: video.height,
-                                username: video.user.name
-                            )
+                            NavigationLink(destination: VideoDetailView(video: video)) {
+                                VideoListCell(
+                                    imageUrl: video.image,
+                                    duration: video.duration,
+                                    width: video.width,
+                                    height: video.height,
+                                    username: video.user.name
+                                )
+                                .accessibilityIdentifier("VideoListCell_\(video.user.name)")
+                            }
                         }
                     }
                     .accessibilityIdentifier("VideoList")
                 }
-                .animation(.interactiveSpring, value: viewModel.videos)
+                .animation(.interactiveSpring(), value: viewModel.videos)
             }
         }
         .navigationBarTitle("Pexels")
-        .navigationBarTitle("Videos")
         .navigationBarItems(trailing: Text(viewModel.isOfflineMode ? "Offline" : "Online")
             .foregroundColor(viewModel.isOfflineMode ? .red : .green))
         .alert(isPresented: $viewModel.error.display) {
