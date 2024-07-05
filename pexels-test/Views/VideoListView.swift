@@ -44,6 +44,7 @@ struct VideoListView: View {
         .accessibilityIdentifier("NoVideosFound")
     }
 
+    // swiftlint:disable closure_body_length
     var body: some View {
         VStack {
             searchView
@@ -54,7 +55,16 @@ struct VideoListView: View {
                 ScrollView {
                     LazyVGrid(columns: columns, spacing: 4) {
                         ForEach(viewModel.videos) { video in
-                            NavigationLink(destination: VideoDetailView(video: video)) {
+                            NavigationLink(destination: VideoDetailView(
+                                videoUrl: video.videoFiles.first?.link ?? "",
+                                username: video.user.name,
+                                width: video.width,
+                                height: video.height,
+                                duration: video.duration,
+                                quality: video.videoFiles.first?.quality ?? "",
+                                fileType: video.videoFiles.first?.fileType ?? "",
+                                placeholderImageUrl: video.image
+                            )) {
                                 VideoListCell(
                                     imageUrl: video.image,
                                     duration: video.duration,
@@ -62,7 +72,6 @@ struct VideoListView: View {
                                     height: video.height,
                                     username: video.user.name
                                 )
-                                .accessibilityIdentifier("VideoListCell_\(video.user.name)")
                             }
                         }
                     }
