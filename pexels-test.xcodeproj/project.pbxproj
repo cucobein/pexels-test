@@ -37,6 +37,8 @@
 		FD7F192F2C37AF390058085A /* XCUIElement+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD7F192E2C37AF390058085A /* XCUIElement+Extensions.swift */; };
 		FD7F19322C37B7260058085A /* Int+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD7F19312C37B7260058085A /* Int+Extensions.swift */; };
 		FD8720502C37D648000C1C34 /* VideoDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD87204F2C37D648000C1C34 /* VideoDetailView.swift */; };
+		FDB41E362C38261100DE8C66 /* CacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDB41E352C38261100DE8C66 /* CacheManager.swift */; };
+		FDB41E382C38265200DE8C66 /* CacheManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDB41E372C38265200DE8C66 /* CacheManagerTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -111,6 +113,8 @@
 		FD7F192E2C37AF390058085A /* XCUIElement+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCUIElement+Extensions.swift"; sourceTree = "<group>"; };
 		FD7F19312C37B7260058085A /* Int+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Extensions.swift"; sourceTree = "<group>"; };
 		FD87204F2C37D648000C1C34 /* VideoDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoDetailView.swift; sourceTree = "<group>"; };
+		FDB41E352C38261100DE8C66 /* CacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheManager.swift; sourceTree = "<group>"; };
+		FDB41E372C38265200DE8C66 /* CacheManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheManagerTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -196,6 +200,7 @@
 				FD789BCD2C3508A5008A759D /* VideoRepositoryTests.swift */,
 				FD789BDF2C351797008A759D /* VideoListViewModelTests.swift */,
 				FD7F19272C376B100058085A /* NetworkMonitorTests.swift */,
+				FDB41E372C38265200DE8C66 /* CacheManagerTests.swift */,
 			);
 			path = "pexels-testTests";
 			sourceTree = "<group>";
@@ -307,6 +312,7 @@
 			isa = PBXGroup;
 			children = (
 				FD7F19232C37686C0058085A /* NetworkMonitor.swift */,
+				FDB41E352C38261100DE8C66 /* CacheManager.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -495,6 +501,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FDB41E362C38261100DE8C66 /* CacheManager.swift in Sources */,
 				FD789BA92C34F3B6008A759D /* PexelsService.swift in Sources */,
 				FD8720502C37D648000C1C34 /* VideoDetailView.swift in Sources */,
 				FD7F19242C37686C0058085A /* NetworkMonitor.swift in Sources */,
@@ -514,6 +521,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FDB41E382C38265200DE8C66 /* CacheManagerTests.swift in Sources */,
 				FD789BC32C3506A3008A759D /* MockVideoRepository.swift in Sources */,
 				FD7F19282C376B100058085A /* NetworkMonitorTests.swift in Sources */,
 				FD789BB42C34F7B9008A759D /* PexelsServiceTests.swift in Sources */,

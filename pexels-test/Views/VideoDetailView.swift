@@ -23,37 +23,42 @@ struct VideoDetailView: View {
                         player.pause()
                         player.replaceCurrentItem(with: nil)
                     }
-                    .accessibilityIdentifier("VideoPlayer")
             } else {
                 Text("Loading video...")
-                    .accessibilityIdentifier("LoadingText")
             }
 
             Text("@\(video.user.name)")
                 .font(.headline)
                 .padding()
-                .accessibilityIdentifier("VideoUserName")
 
             Text("\(video.width)x\(video.height)")
                 .font(.subheadline)
                 .padding()
-                .accessibilityIdentifier("VideoResolution")
 
             Text("\(video.duration.toDurationString())")
                 .font(.subheadline)
                 .padding()
-                .accessibilityIdentifier("VideoDuration")
         }
         .onAppear {
-            if let videoURL = URL(string: video.videoFiles.first?.link ?? "") {
-                player = AVPlayer(url: videoURL)
-            }
+            loadVideo()
         }
         .accessibilityIdentifier("VideoDetailView")
         .navigationBarTitle("Video Detail", displayMode: .inline)
     }
-}
 
+    private func loadVideo() {
+        if let videoURL = URL(string: video.videoFiles.first?.link ?? "") {
+            let cacheKey = NSString(string: videoURL.absoluteString)
+            if let cachedItem = CacheManager.shared.videoCache.object(forKey: cacheKey) {
+                player = AVPlayer(playerItem: cachedItem)
+            } else {
+                let playerItem = AVPlayerItem(url: videoURL)
+                CacheManager.shared.videoCache.setObject(playerItem, forKey: cacheKey)
+                player = AVPlayer(playerItem: playerItem)
+            }
+        }
+    }
+}
 #Preview {
     VideoDetailView(
         video: Video(

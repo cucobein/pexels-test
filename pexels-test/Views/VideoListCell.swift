@@ -14,18 +14,24 @@ struct VideoListCell: View {
     let height: Int
     let username: String
 
+    @State private var image: UIImage?
+
     var body: some View {
         ZStack(alignment: .bottomLeading) {
             Color.black
 
-            AsyncImage(url: URL(string: imageUrl)) { image in
-                image.resizable()
+            if let image = image {
+                Image(uiImage: image)
+                    .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(width: UIScreen.main.bounds.width / 3 - 1, height: UIScreen.main.bounds.width / 3 - 1)
                     .clipped()
-            } placeholder: {
+            } else {
                 ProgressView()
                     .frame(width: UIScreen.main.bounds.width / 3 - 1, height: UIScreen.main.bounds.width / 3 - 1)
+                    .onAppear {
+                        loadImage()
+                    }
             }
 
             Color.black.opacity(0.15)
@@ -43,6 +49,23 @@ struct VideoListCell: View {
             .padding(.bottom, 4)
         }
         .frame(width: UIScreen.main.bounds.width / 3 - 1, height: UIScreen.main.bounds.width / 3 - 1)
+    }
+
+    private func loadImage() {
+        if let cachedImage = CacheManager.shared.imageCache.object(forKey: NSString(string: imageUrl)) {
+            self.image = cachedImage
+        } else {
+            guard let url = URL(string: imageUrl) else { return }
+            URLSession.shared.dataTask(with: url) { data, _, _ in
+                if let data = data, let downloadedImage = UIImage(data: data) {
+                    CacheManager.shared.imageCache.setObject(downloadedImage, forKey: NSString(string: imageUrl))
+                    DispatchQueue.main.async {
+                        self.image = downloadedImage
+                    }
+                }
+            }
+            .resume()
+        }
     }
 }
 
