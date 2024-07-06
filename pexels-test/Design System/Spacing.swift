@@ -5,9 +5,11 @@
 //  Created by Hugo Ramirez on 05/07/24.
 //
 
-import Foundation
+import SwiftUI
 
 enum Spacing: CGFloat {
+    /// Size: 4
+    case halfExtraSmall = 4
     /// Size: 8
     case extraSmall = 8
     /// Size: 12
@@ -24,21 +26,10 @@ enum Spacing: CGFloat {
     case xxLarge = 48
     /// Size: 60
     case xxxLarge = 60
+}
 
-    /// Size: 8
-    static var extraSmallValue: CGFloat { Spacing.extraSmall.rawValue }
-    /// Size: 12
-    static var extraSmallPlusValue: CGFloat { Spacing.extraSmallPlus.rawValue }
-    /// Size: 16
-    static var smallValue: CGFloat { Spacing.small.rawValue }
-    /// Size: 24
-    static var mediumValue: CGFloat { Spacing.medium.rawValue }
-    /// Size: 32
-    static var largeValue: CGFloat { Spacing.large.rawValue }
-    /// Size: 40
-    static var extraLargeValue: CGFloat { Spacing.extraLarge.rawValue }
-    /// Size: 48
-    static var xxLargeValue: CGFloat { Spacing.xxLarge.rawValue }
-    /// Size: 60
-    static var xxxLargeValue: CGFloat { Spacing.xxxLarge.rawValue }
+extension VStack {
+    init(spacing: Spacing, @ViewBuilder content: () -> Content) {
+        self.init(spacing: spacing.rawValue, content: content)
+    }
 }

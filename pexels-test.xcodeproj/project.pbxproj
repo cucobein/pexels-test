@@ -38,7 +38,6 @@
 		FD78D12C2C38C8CB00F9803D /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD78D12B2C38C8CB00F9803D /* Font.swift */; };
 		FD78D12E2C38C91900F9803D /* Padding.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD78D12D2C38C91900F9803D /* Padding.swift */; };
 		FD78D1302C38C98100F9803D /* Spacing.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD78D12F2C38C98100F9803D /* Spacing.swift */; };
-		FD78D1322C38C98800F9803D /* Sizes.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD78D1312C38C98800F9803D /* Sizes.swift */; };
 		FD7F19242C37686C0058085A /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD7F19232C37686C0058085A /* NetworkMonitor.swift */; };
 		FD7F19262C3768A20058085A /* MockNetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD7F19252C3768A20058085A /* MockNetworkMonitor.swift */; };
 		FD7F19282C376B100058085A /* NetworkMonitorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD7F19272C376B100058085A /* NetworkMonitorTests.swift */; };
@@ -125,7 +124,6 @@
 		FD78D12B2C38C8CB00F9803D /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
 		FD78D12D2C38C91900F9803D /* Padding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Padding.swift; sourceTree = "<group>"; };
 		FD78D12F2C38C98100F9803D /* Spacing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spacing.swift; sourceTree = "<group>"; };
-		FD78D1312C38C98800F9803D /* Sizes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sizes.swift; sourceTree = "<group>"; };
 		FD7F19232C37686C0058085A /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
 		FD7F19252C3768A20058085A /* MockNetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNetworkMonitor.swift; sourceTree = "<group>"; };
 		FD7F19272C376B100058085A /* NetworkMonitorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitorTests.swift; sourceTree = "<group>"; };
@@ -375,7 +373,6 @@
 				FD78D12B2C38C8CB00F9803D /* Font.swift */,
 				FD78D12D2C38C91900F9803D /* Padding.swift */,
 				FD78D12F2C38C98100F9803D /* Spacing.swift */,
-				FD78D1312C38C98800F9803D /* Sizes.swift */,
 			);
 			path = "Design System";
 			sourceTree = "<group>";
@@ -616,7 +613,6 @@
 				FD78D11C2C38C62D00F9803D /* Strings+Generated.swift in Sources */,
 				FD789BAB2C34F4A3008A759D /* Video.swift in Sources */,
 				FD7F192C2C37A8FE0058085A /* VideoListCell.swift in Sources */,
-				FD78D1322C38C98800F9803D /* Sizes.swift in Sources */,
 				FD22A1C62C33801700763C01 /* ContentView.swift in Sources */,
 				FD789BDA2C35108E008A759D /* VideoListViewModel.swift in Sources */,
 				FD78D12C2C38C8CB00F9803D /* Font.swift in Sources */,

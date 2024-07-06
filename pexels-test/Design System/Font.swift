@@ -5,7 +5,7 @@
 //  Created by Hugo Ramirez on 05/07/24.
 //
 
-import Foundation
+import SwiftUI
 
 enum FontSize {
     /// Size: 36
@@ -53,5 +53,9 @@ enum Font {
         case .montserratBold: return "Montserrat-Bold"
         case .bebasNeueRegular: return "BebasNeue-Regular"
         }
+    }
+
+    func size(_ fontSize: FontSize) -> SwiftUI.Font {
+        SwiftUI.Font.custom(self.name, size: fontSize.size)
     }
 }

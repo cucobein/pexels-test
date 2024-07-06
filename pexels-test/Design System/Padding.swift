@@ -7,9 +7,11 @@
 
 import SwiftUI
 
-enum PaddingSize: CGFloat {
+enum Padding: CGFloat {
     /// Size: 0
     case noPadding = 0
+    /// Size: 4
+    case halfExtraSmall = 4
     /// Size: 8
     case extraSmall = 8
     /// Size: 12
@@ -26,4 +28,14 @@ enum PaddingSize: CGFloat {
     case xxLarge = 48
     /// Size: 60
     case xxxLarge = 60
+}
+
+extension View {
+    func padding(_ edges: Edge.Set = .all, _ padding: Padding) -> some View {
+        self.padding(edges, padding.rawValue)
+    }
+
+    func padding(_ padding: Padding) -> some View {
+        self.padding(padding.rawValue)
+    }
 }

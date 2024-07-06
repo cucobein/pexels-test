@@ -18,8 +18,6 @@ struct VideoListCell: View {
 
     var body: some View {
         ZStack(alignment: .bottomLeading) {
-            Color.black
-
             if let image = image {
                 Image(uiImage: image)
                     .resizable()
@@ -34,19 +32,20 @@ struct VideoListCell: View {
                     }
             }
 
-            Color.black.opacity(0.15)
+            Color.primaryBackground.opacity(0.15)
                 .frame(width: UIScreen.main.bounds.width / 3 - 1, height: UIScreen.main.bounds.width / 3 - 1)
 
             VStack(alignment: .leading, spacing: .zero) {
                 Text("\(width)x\(height)")
-                    .font(.caption)
-                    .foregroundColor(.white)
+                    .font(Font.montserratRegular.size(.caption))
+                    .foregroundColor(.primaryForeground)
+
                 Text(duration.toDurationString())
-                    .font(.caption)
-                    .foregroundColor(.white)
+                    .font(Font.montserratRegular.size(.caption))
+                    .foregroundColor(.primaryForeground)
             }
-            .padding(.horizontal, 4)
-            .padding(.bottom, 4)
+            .padding(.horizontal, Padding.halfExtraSmall)
+            .padding(.bottom, Padding.halfExtraSmall)
         }
         .frame(width: UIScreen.main.bounds.width / 3 - 1, height: UIScreen.main.bounds.width / 3 - 1)
     }
@@ -70,12 +69,17 @@ struct VideoListCell: View {
 }
 
 #Preview {
-    VideoListCell(
-        imageUrl: "https://via.placeholder.com/150",
-        duration: 150,
-        width: 1_920,
-        height: 1_080,
-        username: "Hugo"
-    )
-    .frame(width: 150)
+    ZStack {
+        Color.primaryBackground
+
+        VideoListCell(
+            imageUrl: "https://via.placeholder.com/150",
+            duration: 150,
+            width: 1_920,
+            height: 1_080,
+            username: "Hugo"
+        )
+    }
+    .frame(maxWidth: .infinity, maxHeight: .infinity)
+    .edgesIgnoringSafeArea(.all)
 }
