@@ -66,11 +66,13 @@ struct VideoListView: View {
                                 placeholderImageUrl: video.image
                             )) {
                                 VideoListCell(
-                                    imageUrl: video.image,
-                                    duration: video.duration,
-                                    width: video.width,
-                                    height: video.height,
-                                    username: video.user.name
+                                    viewModel: VideoListCellViewModel(
+                                        imageUrl: video.image,
+                                        duration: video.duration,
+                                        width: video.width,
+                                        height: video.height,
+                                        username: video.user.name
+                                    )
                                 )
                             }
                         }

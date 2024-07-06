@@ -11,19 +11,14 @@ struct VideoListCell: View {
     private enum Constants {
         static let imageWidth: CGFloat = UIScreen.main.bounds.width / 3 - 1
         static let imageHeight: CGFloat = UIScreen.main.bounds.width / 3 - 1
+        static let overlayOpacity = 0.15
     }
 
-    let imageUrl: String
-    let duration: Int
-    let width: Int
-    let height: Int
-    let username: String
-
-    @State private var image: UIImage?
+    @StateObject var viewModel: VideoListCellViewModel
 
     private var thumbnail: some View {
         Group {
-            if let image = image {
+            if let image = viewModel.image {
                 Image(uiImage: image)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
@@ -32,30 +27,27 @@ struct VideoListCell: View {
             } else {
                 ProgressView()
                     .frame(width: Constants.imageWidth, height: Constants.imageHeight)
-                    .onAppear {
-                        loadImage()
-                    }
             }
         }
     }
 
     private var overlay: some View {
-        Color.primaryBackground.opacity(0.15)
+        Color.primaryBackground.opacity(Constants.overlayOpacity)
             .frame(width: Constants.imageWidth, height: Constants.imageHeight)
     }
 
     private var info: some View {
         VStack(alignment: .leading, spacing: .zero) {
-            Text("\(width)x\(height)")
+            Text("\(viewModel.width)x\(viewModel.height)")
                 .font(Font.montserratRegular.size(.caption))
                 .foregroundColor(.primaryForeground)
 
-            Text(duration.toDurationString())
+            Text(viewModel.duration.toDurationString())
                 .font(Font.montserratRegular.size(.caption))
                 .foregroundColor(.primaryForeground)
         }
-        .padding(.horizontal, Padding.halfExtraSmall)
-        .padding(.bottom, Padding.halfExtraSmall)
+        .padding(.horizontal, .halfExtraSmall)
+        .padding(.bottom, .halfExtraSmall)
     }
 
     var body: some View {
@@ -68,23 +60,6 @@ struct VideoListCell: View {
         }
         .frame(width: Constants.imageWidth, height: Constants.imageHeight)
     }
-
-    private func loadImage() {
-        if let cachedImage = CacheManager.shared.imageCache.object(forKey: NSString(string: imageUrl)) {
-            self.image = cachedImage
-        } else {
-            guard let url = URL(string: imageUrl) else { return }
-            URLSession.shared.dataTask(with: url) { data, _, _ in
-                if let data = data, let downloadedImage = UIImage(data: data) {
-                    CacheManager.shared.imageCache.setObject(downloadedImage, forKey: NSString(string: imageUrl))
-                    DispatchQueue.main.async {
-                        self.image = downloadedImage
-                    }
-                }
-            }
-            .resume()
-        }
-    }
 }
 
 #Preview {
@@ -92,11 +67,13 @@ struct VideoListCell: View {
         Color.primaryBackground
 
         VideoListCell(
-            imageUrl: "https://via.placeholder.com/150",
-            duration: 150,
-            width: 1_920,
-            height: 1_080,
-            username: "Hugo"
+            viewModel: VideoListCellViewModel(
+                imageUrl: "https://via.placeholder.com/150",
+                duration: 150,
+                width: 1_920,
+                height: 1_080,
+                username: "Hugo"
+            )
         )
     }
     .frame(maxWidth: .infinity, maxHeight: .infinity)
