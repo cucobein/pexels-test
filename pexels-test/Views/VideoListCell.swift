@@ -8,6 +8,11 @@
 import SwiftUI
 
 struct VideoListCell: View {
+    private enum Constants {
+        static let imageWidth: CGFloat = UIScreen.main.bounds.width / 3 - 1
+        static let imageHeight: CGFloat = UIScreen.main.bounds.width / 3 - 1
+    }
+
     let imageUrl: String
     let duration: Int
     let width: Int
@@ -16,38 +21,52 @@ struct VideoListCell: View {
 
     @State private var image: UIImage?
 
-    var body: some View {
-        ZStack(alignment: .bottomLeading) {
+    private var thumbnail: some View {
+        Group {
             if let image = image {
                 Image(uiImage: image)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .frame(width: UIScreen.main.bounds.width / 3 - 1, height: UIScreen.main.bounds.width / 3 - 1)
+                    .frame(width: Constants.imageWidth, height: Constants.imageHeight)
                     .clipped()
             } else {
                 ProgressView()
-                    .frame(width: UIScreen.main.bounds.width / 3 - 1, height: UIScreen.main.bounds.width / 3 - 1)
+                    .frame(width: Constants.imageWidth, height: Constants.imageHeight)
                     .onAppear {
                         loadImage()
                     }
             }
-
-            Color.primaryBackground.opacity(0.15)
-                .frame(width: UIScreen.main.bounds.width / 3 - 1, height: UIScreen.main.bounds.width / 3 - 1)
-
-            VStack(alignment: .leading, spacing: .zero) {
-                Text("\(width)x\(height)")
-                    .font(Font.montserratRegular.size(.caption))
-                    .foregroundColor(.primaryForeground)
-
-                Text(duration.toDurationString())
-                    .font(Font.montserratRegular.size(.caption))
-                    .foregroundColor(.primaryForeground)
-            }
-            .padding(.horizontal, Padding.halfExtraSmall)
-            .padding(.bottom, Padding.halfExtraSmall)
         }
-        .frame(width: UIScreen.main.bounds.width / 3 - 1, height: UIScreen.main.bounds.width / 3 - 1)
+    }
+
+    private var overlay: some View {
+        Color.primaryBackground.opacity(0.15)
+            .frame(width: Constants.imageWidth, height: Constants.imageHeight)
+    }
+
+    private var info: some View {
+        VStack(alignment: .leading, spacing: .zero) {
+            Text("\(width)x\(height)")
+                .font(Font.montserratRegular.size(.caption))
+                .foregroundColor(.primaryForeground)
+
+            Text(duration.toDurationString())
+                .font(Font.montserratRegular.size(.caption))
+                .foregroundColor(.primaryForeground)
+        }
+        .padding(.horizontal, Padding.halfExtraSmall)
+        .padding(.bottom, Padding.halfExtraSmall)
+    }
+
+    var body: some View {
+        ZStack(alignment: .bottomLeading) {
+            thumbnail
+
+            overlay
+
+            info
+        }
+        .frame(width: Constants.imageWidth, height: Constants.imageHeight)
     }
 
     private func loadImage() {
