@@ -13,9 +13,9 @@ import RealmSwift
 struct VideoListView: View {
     private enum Constants {
         static let searchBarCornerRadius = 8.0
-        static let searchBarAccessibilityIdentifier = "Search..."
+        static let searchBarAccessibilityIdentifier = "Search"
         static let searchBarBackgroundOpacity = 0.3
-        static let emptyStateAccessibilityIdentifier = "Search..."
+        static let emptyStateAccessibilityIdentifier = "EmptyState"
         static let videoListAccessibilityIndentifier = "VideoList"
     }
 

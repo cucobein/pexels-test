@@ -18,7 +18,7 @@ class PexelsUITests: XCTestCase {
         let app = XCUIApplication()
         app.launch()
 
-        let searchField = app.textFields["Search..."]
+        let searchField = app.textFields["Search"]
         searchField.tap()
         searchField.typeText("nature")
 
@@ -31,10 +31,10 @@ class PexelsUITests: XCTestCase {
         let app = XCUIApplication()
         app.launch()
 
-        let searchField = app.textFields["Search..."]
+        let searchField = app.textFields["Search"]
         searchField.tap()
         searchField.clearText()
-        searchField.typeText("animals")
+        searchField.typeText("nature")
 
         let videoList = app.scrollViews.otherElements["VideoList"]
         XCTAssertTrue(videoList.waitForExistence(timeout: 20.0))
@@ -45,12 +45,12 @@ class PexelsUITests: XCTestCase {
         let app = XCUIApplication()
         app.launch()
 
-        let searchField = app.textFields["Search..."]
+        let searchField = app.textFields["Search"]
         searchField.tap()
         searchField.clearText()
         searchField.typeText("ASDFnonexistentqueryWXYZ")
 
-        let noVideosText = app.staticTexts["NoVideosFound"]
+        let noVideosText = app.staticTexts["EmptyState"]
         XCTAssertTrue(noVideosText.waitForExistence(timeout: 10.0), "List should display empty state")
     }
 
@@ -58,7 +58,7 @@ class PexelsUITests: XCTestCase {
         let app = XCUIApplication()
         app.launch()
 
-        let searchField = app.textFields["Search..."]
+        let searchField = app.textFields["Search"]
         searchField.tap()
         searchField.clearText()
         searchField.typeText("nature")
