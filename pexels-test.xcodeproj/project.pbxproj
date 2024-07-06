@@ -35,6 +35,10 @@
 		FD78D1212C38C68C00F9803D /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FD78D1202C38C68C00F9803D /* Montserrat-Bold.ttf */; };
 		FD78D1232C38C69400F9803D /* Montserrat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FD78D1222C38C69400F9803D /* Montserrat-Regular.ttf */; };
 		FD78D1252C38C69900F9803D /* BebasNeue-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FD78D1242C38C69900F9803D /* BebasNeue-Regular.ttf */; };
+		FD78D12C2C38C8CB00F9803D /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD78D12B2C38C8CB00F9803D /* Font.swift */; };
+		FD78D12E2C38C91900F9803D /* Padding.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD78D12D2C38C91900F9803D /* Padding.swift */; };
+		FD78D1302C38C98100F9803D /* Spacing.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD78D12F2C38C98100F9803D /* Spacing.swift */; };
+		FD78D1322C38C98800F9803D /* Sizes.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD78D1312C38C98800F9803D /* Sizes.swift */; };
 		FD7F19242C37686C0058085A /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD7F19232C37686C0058085A /* NetworkMonitor.swift */; };
 		FD7F19262C3768A20058085A /* MockNetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD7F19252C3768A20058085A /* MockNetworkMonitor.swift */; };
 		FD7F19282C376B100058085A /* NetworkMonitorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD7F19272C376B100058085A /* NetworkMonitorTests.swift */; };
@@ -118,6 +122,10 @@
 		FD78D1222C38C69400F9803D /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Regular.ttf"; sourceTree = "<group>"; };
 		FD78D1242C38C69900F9803D /* BebasNeue-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BebasNeue-Regular.ttf"; sourceTree = "<group>"; };
 		FD78D1262C38C7B800F9803D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		FD78D12B2C38C8CB00F9803D /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
+		FD78D12D2C38C91900F9803D /* Padding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Padding.swift; sourceTree = "<group>"; };
+		FD78D12F2C38C98100F9803D /* Spacing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spacing.swift; sourceTree = "<group>"; };
+		FD78D1312C38C98800F9803D /* Sizes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sizes.swift; sourceTree = "<group>"; };
 		FD7F19232C37686C0058085A /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
 		FD7F19252C3768A20058085A /* MockNetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNetworkMonitor.swift; sourceTree = "<group>"; };
 		FD7F19272C376B100058085A /* NetworkMonitorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitorTests.swift; sourceTree = "<group>"; };
@@ -184,6 +192,7 @@
 				FD78D1262C38C7B800F9803D /* Info.plist */,
 				FD789BDD2C351714008A759D /* Secrets.plist */,
 				FD789BD72C35103F008A759D /* App */,
+				FD78D12A2C38C8BA00F9803D /* Design System */,
 				FD7F19302C37B7120058085A /* Extensions */,
 				FD789BA72C34F386008A759D /* Repository */,
 				FD789BA62C34F380008A759D /* Services */,
@@ -358,6 +367,17 @@
 				FD78D1202C38C68C00F9803D /* Montserrat-Bold.ttf */,
 			);
 			path = Montserrat;
+			sourceTree = "<group>";
+		};
+		FD78D12A2C38C8BA00F9803D /* Design System */ = {
+			isa = PBXGroup;
+			children = (
+				FD78D12B2C38C8CB00F9803D /* Font.swift */,
+				FD78D12D2C38C91900F9803D /* Padding.swift */,
+				FD78D12F2C38C98100F9803D /* Spacing.swift */,
+				FD78D1312C38C98800F9803D /* Sizes.swift */,
+			);
+			path = "Design System";
 			sourceTree = "<group>";
 		};
 		FD7F19212C3767C30058085A /* Entities */ = {
@@ -596,13 +616,17 @@
 				FD78D11C2C38C62D00F9803D /* Strings+Generated.swift in Sources */,
 				FD789BAB2C34F4A3008A759D /* Video.swift in Sources */,
 				FD7F192C2C37A8FE0058085A /* VideoListCell.swift in Sources */,
+				FD78D1322C38C98800F9803D /* Sizes.swift in Sources */,
 				FD22A1C62C33801700763C01 /* ContentView.swift in Sources */,
 				FD789BDA2C35108E008A759D /* VideoListViewModel.swift in Sources */,
+				FD78D12C2C38C8CB00F9803D /* Font.swift in Sources */,
+				FD78D1302C38C98100F9803D /* Spacing.swift in Sources */,
 				FD7F192A2C37A4DC0058085A /* VideoListView.swift in Sources */,
 				FD7F19322C37B7260058085A /* Int+Extensions.swift in Sources */,
 				FD789BC02C3503EF008A759D /* VideoRepository.swift in Sources */,
 				FD22A1C42C33801700763C01 /* pexels_testApp.swift in Sources */,
 				FD789BAD2C34F4DF008A759D /* VideoObject.swift in Sources */,
+				FD78D12E2C38C91900F9803D /* Padding.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
