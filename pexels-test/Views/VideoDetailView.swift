@@ -42,13 +42,9 @@ struct VideoDetailView: View {
     }
 
     private var info: some View {
-        VStack(alignment: .leading, spacing: Spacing.halfExtraSmall.rawValue) {
+        VStack(alignment: .leading, spacing: Spacing.halfExtraSmall) {
             Text("@\(viewModel.username)")
-                .font(Font.montserratBold.size(.caption))
-                .foregroundColor(.primaryForeground)
-
-            Text(viewModel.duration.toDurationString())
-                .font(Font.montserratRegular.size(.caption))
+                .font(Font.montserratBold.size(.subheading))
                 .foregroundColor(.primaryForeground)
 
             HStack {
@@ -60,12 +56,16 @@ struct VideoDetailView: View {
                     .font(Font.montserratRegular.size(.caption))
                     .foregroundColor(.primaryForeground)
 
-                Text(viewModel.fileType)
+                Text(viewModel.fileType + ",")
+                    .font(Font.montserratRegular.size(.caption))
+                    .foregroundColor(.primaryForeground)
+
+                Text(viewModel.duration.toDurationString())
                     .font(Font.montserratRegular.size(.caption))
                     .foregroundColor(.primaryForeground)
             }
         }
-        .padding()
+        .padding([.leading, .bottom], Padding.extraSmall)
         .background(.primaryBackground.opacity(Constants.infoPanelOpacity))
     }
 

@@ -11,6 +11,14 @@ import RealmSwift
 
 // swiftlint:disable force_try
 struct VideoListView: View {
+    private enum Constants {
+        static let searchBarCornerRadius = 8.0
+        static let searchBarAccessibilityIdentifier = "Search..."
+        static let searchBarBackgroundOpacity = 0.3
+        static let emptyStateAccessibilityIdentifier = "Search..."
+        static let videoListAccessibilityIndentifier = "VideoList"
+    }
+
     @StateObject private var viewModel = VideoListViewModel(
         pexelsService: PexelsService(),
         videoRepository: VideoRepository(realm: try! Realm())
@@ -24,24 +32,44 @@ struct VideoListView: View {
 
     private var searchView: some View {
         HStack {
-            TextField("Search...", text: $viewModel.searchQuery)
-                .padding()
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-                .accessibilityIdentifier("Search...")
+            HStack {
+                Image(systemName: "magnifyingglass")
+                    .foregroundColor(.tertiaryForeground)
 
-            if viewModel.isLoading {
-                ProgressView()
-                    .padding(.trailing, 8)
+                TextField("", text: $viewModel.searchQuery)
+                    .foregroundColor(.primaryForeground)
+                    .padding(Padding.extraSmall)
+                    .cornerRadius(Constants.searchBarCornerRadius)
+                    .accessibilityIdentifier(Constants.searchBarAccessibilityIdentifier)
+
+                if !viewModel.searchQuery.isEmpty {
+                    if viewModel.isLoading {
+                        ProgressView()
+                            .padding(.trailing, Padding.extraSmall)
+                    } else {
+                        Button {
+                            viewModel.searchQuery = ""
+                        } label: {
+                            Image(systemName: "xmark.circle.fill")
+                                .foregroundColor(.tertiaryForeground)
+                        }
+                    }
+                }
             }
+            .padding(.horizontal, Padding.extraSmall)
+            .background(.tertiaryForeground.opacity(Constants.searchBarBackgroundOpacity))
+            .cornerRadius(Constants.searchBarCornerRadius)
         }
     }
 
     private var emptyStateView: some View {
         ContentUnavailableView {
-            Label("No results found", systemImage: "video.slash")
+            Label(L10n.VideoDetail.noResultsFound, systemImage: "video.slash")
+                .foregroundColor(.primaryForeground)
+                .font(Font.montserratBold.size(.heading))
                 .symbolEffect(.pulse)
         }
-        .accessibilityIdentifier("NoVideosFound")
+        .accessibilityIdentifier(Constants.emptyStateAccessibilityIdentifier)
     }
 
     // swiftlint:disable closure_body_length
@@ -81,19 +109,33 @@ struct VideoListView: View {
                             }
                         }
                     }
-                    .accessibilityIdentifier("VideoList")
+                    .accessibilityIdentifier(Constants.videoListAccessibilityIndentifier)
                 }
                 .animation(.interactiveSpring(), value: viewModel.videos)
             }
         }
-        .navigationBarTitle("Pexels")
-        .navigationBarItems(trailing: Text(viewModel.isOfflineMode ? "Offline" : "Online")
-            .foregroundColor(viewModel.isOfflineMode ? .red : .green))
+        .background(.primaryBackground)
+        .toolbar {
+            ToolbarItem(placement: .principal) {
+                Text(L10n.VideoDetail.title)
+                    .font(Font.montserratBold.size(.heading))
+                    .foregroundStyle(.primaryForeground)
+            }
+
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button {
+                    viewModel.isOfflineMode.toggle()
+                } label: {
+                    Image(systemName: viewModel.isOfflineMode ? "wifi.slash" : "wifi")
+                        .foregroundStyle(viewModel.isOfflineMode ? .red : .green)
+                }
+            }
+        }
         .alert(isPresented: $viewModel.error.display) {
             Alert(
-                title: Text("Error"),
+                title: Text(L10n.VideoDetail.error),
                 message: Text(viewModel.error.message),
-                dismissButton: .default(Text("OK"))
+                dismissButton: .default(Text(L10n.VideoDetail.ok))
             )
         }
     }

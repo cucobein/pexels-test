@@ -10,6 +10,19 @@ import Foundation
 // swiftlint:disable explicit_type_interface function_parameter_count identifier_name line_length
 // swiftlint:disable nesting type_body_length type_name vertical_whitespace_opening_braces
 internal enum L10n {
+  internal enum VideoDetail {
+    /// Error
+    internal static let error = L10n.tr("Localizable", "videoDetail.error", fallback: "Error")
+    /// Localizable.strings
+    ///   pexels-test
+    /// 
+    ///   Created by Hugo Ramirez on 05/07/24.
+    internal static let noResultsFound = L10n.tr("Localizable", "videoDetail.noResultsFound", fallback: "No results found")
+    /// Ok
+    internal static let ok = L10n.tr("Localizable", "videoDetail.ok", fallback: "Ok")
+    /// Video Detail
+    internal static let title = L10n.tr("Localizable", "videoDetail.title", fallback: "Video Detail")
+  }
 }
 // swiftlint:enable explicit_type_interface function_parameter_count identifier_name line_length
 // swiftlint:enable nesting type_body_length type_name vertical_whitespace_opening_braces

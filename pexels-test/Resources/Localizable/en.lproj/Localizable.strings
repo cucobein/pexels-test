@@ -5,3 +5,8 @@
   Created by Hugo Ramirez on 05/07/24.
   
 */
+
+"videoDetail.noResultsFound" = "No results found";
+"videoDetail.title" = "Video Detail";
+"videoDetail.error" = "Error";
+"videoDetail.ok" = "Ok";

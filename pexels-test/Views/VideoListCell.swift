@@ -37,17 +37,23 @@ struct VideoListCell: View {
     }
 
     private var info: some View {
-        VStack(alignment: .leading, spacing: .zero) {
+        VStack(alignment: .leading, spacing: Spacing.halfExtraSmall) {
             Text("\(viewModel.width)x\(viewModel.height)")
                 .font(Font.montserratRegular.size(.caption))
                 .foregroundColor(.primaryForeground)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(.top, .halfExtraSmall)
+                .padding(.horizontal, .halfExtraSmall)
 
             Text(viewModel.duration.toDurationString())
                 .font(Font.montserratRegular.size(.caption))
                 .foregroundColor(.primaryForeground)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(.horizontal, .halfExtraSmall)
+                .padding(.bottom, .halfExtraSmall)
         }
-        .padding(.horizontal, .halfExtraSmall)
-        .padding(.bottom, .halfExtraSmall)
+        .frame(maxWidth: .infinity)
+        .background(.primaryBackground)
     }
 
     var body: some View {
