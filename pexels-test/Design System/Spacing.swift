@@ -32,4 +32,18 @@ extension VStack {
     init(spacing: Spacing, @ViewBuilder content: () -> Content) {
         self.init(spacing: spacing.rawValue, content: content)
     }
+
+    init(
+        alignment: HorizontalAlignment = .center,
+        spacing: Spacing? = nil,
+        @ViewBuilder content: @escaping () -> Content
+    ) {
+        self.init(alignment: alignment, spacing: spacing?.rawValue, content: content)
+    }
+}
+
+extension LazyVGrid {
+    init(columns: [GridItem], spacing: Spacing? = nil, @ViewBuilder content: @escaping () -> Content) {
+        self.init(columns: columns, spacing: spacing?.rawValue, content: content)
+    }
 }

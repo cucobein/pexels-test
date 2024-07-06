@@ -52,6 +52,8 @@ struct VideoListCell: View {
 
     var body: some View {
         ZStack(alignment: .bottomLeading) {
+            Color.primaryBackground
+
             thumbnail
 
             overlay

@@ -46,25 +46,29 @@ struct VideoListView: View {
 
     // swiftlint:disable closure_body_length
     var body: some View {
-        VStack {
+        VStack(spacing: .zero) {
             searchView
 
             if viewModel.videos.isEmpty {
                 emptyStateView
             } else {
                 ScrollView {
-                    LazyVGrid(columns: columns, spacing: 4) {
+                    LazyVGrid(columns: columns, spacing: Spacing.halfExtraSmall) {
                         ForEach(viewModel.videos) { video in
-                            NavigationLink(destination: VideoDetailView(
-                                videoUrl: video.videoFiles.first?.link ?? "",
-                                username: video.user.name,
-                                width: video.width,
-                                height: video.height,
-                                duration: video.duration,
-                                quality: video.videoFiles.first?.quality ?? "",
-                                fileType: video.videoFiles.first?.fileType ?? "",
-                                placeholderImageUrl: video.image
-                            )) {
+                            NavigationLink {
+                                VideoDetailView(
+                                    viewModel: VideoDetailViewModel(
+                                        videoUrl: video.videoFiles.first?.link ?? "",
+                                        username: video.user.name,
+                                        width: video.width,
+                                        height: video.height,
+                                        duration: video.duration,
+                                        quality: video.videoFiles.first?.quality ?? "",
+                                        fileType: video.videoFiles.first?.fileType ?? "",
+                                        placeholderImageUrl: video.image
+                                    )
+                                )
+                            } label: {
                                 VideoListCell(
                                     viewModel: VideoListCellViewModel(
                                         imageUrl: video.image,

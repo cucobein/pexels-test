@@ -39,6 +39,7 @@
 		FD78D12E2C38C91900F9803D /* Padding.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD78D12D2C38C91900F9803D /* Padding.swift */; };
 		FD78D1302C38C98100F9803D /* Spacing.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD78D12F2C38C98100F9803D /* Spacing.swift */; };
 		FD78D1342C38D25500F9803D /* VideoListCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD78D1332C38D25500F9803D /* VideoListCellViewModel.swift */; };
+		FD78D1362C38D5BC00F9803D /* VideoDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD78D1352C38D5BC00F9803D /* VideoDetailViewModel.swift */; };
 		FD7F19242C37686C0058085A /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD7F19232C37686C0058085A /* NetworkMonitor.swift */; };
 		FD7F19262C3768A20058085A /* MockNetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD7F19252C3768A20058085A /* MockNetworkMonitor.swift */; };
 		FD7F19282C376B100058085A /* NetworkMonitorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD7F19272C376B100058085A /* NetworkMonitorTests.swift */; };
@@ -126,6 +127,7 @@
 		FD78D12D2C38C91900F9803D /* Padding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Padding.swift; sourceTree = "<group>"; };
 		FD78D12F2C38C98100F9803D /* Spacing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spacing.swift; sourceTree = "<group>"; };
 		FD78D1332C38D25500F9803D /* VideoListCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoListCellViewModel.swift; sourceTree = "<group>"; };
+		FD78D1352C38D5BC00F9803D /* VideoDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoDetailViewModel.swift; sourceTree = "<group>"; };
 		FD7F19232C37686C0058085A /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
 		FD7F19252C3768A20058085A /* MockNetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNetworkMonitor.swift; sourceTree = "<group>"; };
 		FD7F19272C376B100058085A /* NetworkMonitorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitorTests.swift; sourceTree = "<group>"; };
@@ -293,6 +295,7 @@
 			children = (
 				FD789BD92C35108E008A759D /* VideoListViewModel.swift */,
 				FD78D1332C38D25500F9803D /* VideoListCellViewModel.swift */,
+				FD78D1352C38D5BC00F9803D /* VideoDetailViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -623,6 +626,7 @@
 				FD78D1302C38C98100F9803D /* Spacing.swift in Sources */,
 				FD7F192A2C37A4DC0058085A /* VideoListView.swift in Sources */,
 				FD7F19322C37B7260058085A /* Int+Extensions.swift in Sources */,
+				FD78D1362C38D5BC00F9803D /* VideoDetailViewModel.swift in Sources */,
 				FD789BC02C3503EF008A759D /* VideoRepository.swift in Sources */,
 				FD22A1C42C33801700763C01 /* pexels_testApp.swift in Sources */,
 				FD789BAD2C34F4DF008A759D /* VideoObject.swift in Sources */,
