@@ -114,13 +114,13 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## Acknowledgements
 
 - Thanks to [Pexels](https://www.pexels.com/) for providing the API and video content.
-- Icons and design inspiration from Instagram.
 
 ---
 
 ## Screenshots
 
-![Screenshot 1](path/to/screenshot1.png)
-![Screenshot 2](path/to/screenshot2.png)
+![1](https://github.com/cucobein/pexels-test/assets/13151201/3dd8e8c7-f5c9-4e28-959f-af74b65dc392)
+
+![2](https://github.com/cucobein/pexels-test/assets/13151201/7ffddf2a-cdc6-4ae2-a522-c11035d2daf2)
 
 Feel free to customize the README to better fit your project's specifics and any additional details you'd like to include.
