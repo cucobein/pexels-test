@@ -40,7 +40,7 @@ class PexelsServiceTests: XCTestCase {
 
         var fetchedVideos: [Video] = []
 
-        service.searchVideos(query: "nature")
+        service.searchVideos(query: "nature", page: 1, perPage: 15)
             .sink(receiveCompletion: { completion in
                 if case .failure(let error) = completion {
                     XCTFail("Error fetching videos: \(error)")

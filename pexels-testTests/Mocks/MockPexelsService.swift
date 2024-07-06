@@ -11,8 +11,12 @@ import Combine
 class MockPexelsService: PexelsServiceProtocol {
     var videos: [Video] = []
 
-    func searchVideos(query: String) -> AnyPublisher<[Video], Error> {
-        Just(videos)
+    func searchVideos(query: String, page: Int, perPage: Int) -> AnyPublisher<[Video], Error> {
+        let startIndex = (page - 1) * perPage
+        let endIndex = min(startIndex + perPage, videos.count)
+        let pageVideos = Array(videos[startIndex..<endIndex])
+
+        return Just(pageVideos)
             .setFailureType(to: Error.self)
             .eraseToAnyPublisher()
     }

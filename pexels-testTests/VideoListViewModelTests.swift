@@ -124,7 +124,7 @@ class VideoListViewModelTests: XCTestCase {
 
         var fetchedVideos: [Video] = []
 
-        service.searchVideos(query: "nature")
+        service.searchVideos(query: "nature", page: 1, perPage: 15)
             .sink(receiveCompletion: { completion in
                 if case .failure(let error) = completion {
                     XCTFail("Error fetching videos: \(error)")
@@ -201,5 +201,67 @@ class VideoListViewModelTests: XCTestCase {
         )], query: "nature")
 
         wait(for: [expectation], timeout: 3.0)
+    }
+
+    func testLoadMoreVideos() {
+        let initialVideos = (1...15).map { index in
+            Video(
+                id: index,
+                width: 1_920,
+                height: 1_080,
+                url: "https://via.placeholder.com/\(index)",
+                image: "https://via.placeholder.com/\(index)",
+                duration: 120,
+                user: User(id: index, name: "User \(index)", url: "https://via.placeholder.com/\(index)"),
+                videoFiles: [],
+                videoPictures: []
+            )
+        }
+
+        mockPexelsService.videos = initialVideos
+        let expectation1 = XCTestExpectation(description: "Wait for initial videos to load")
+
+        viewModel.$videos
+            .dropFirst()
+            .sink { _ in
+                expectation1.fulfill()
+            }
+            .store(in: &cancellables)
+
+        viewModel.searchVideos(query: "nature")
+
+        wait(for: [expectation1], timeout: 5.0)
+
+        XCTAssertEqual(viewModel.videos.count, 15)
+
+        let additionalVideos = (16...30).map { index in
+            Video(
+                id: index,
+                width: 1_920,
+                height: 1_080,
+                url: "https://via.placeholder.com/\(index)",
+                image: "https://via.placeholder.com/\(index)",
+                duration: 120,
+                user: User(id: index, name: "User \(index)", url: "https://via.placeholder.com/\(index)"),
+                videoFiles: [],
+                videoPictures: []
+            )
+        }
+
+        mockPexelsService.videos.append(contentsOf: additionalVideos)
+        let expectation2 = XCTestExpectation(description: "Wait for more videos to load")
+
+        viewModel.$videos
+            .dropFirst()
+            .sink { _ in
+                expectation2.fulfill()
+            }
+            .store(in: &cancellables)
+
+        viewModel.loadMoreVideos()
+
+        wait(for: [expectation2], timeout: 5.0)
+
+        XCTAssertEqual(viewModel.videos.count, 30)
     }
 }

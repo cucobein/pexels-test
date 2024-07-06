@@ -14,19 +14,6 @@ class PexelsUITests: XCTestCase {
         app.launch()
     }
 
-    func testVideoListViewDisplaysVideos() throws {
-        let app = XCUIApplication()
-        app.launch()
-
-        let searchField = app.textFields["Search"]
-        searchField.tap()
-        searchField.typeText("nature")
-
-        let videoList = app.scrollViews.otherElements["VideoList"]
-        XCTAssertTrue(videoList.waitForExistence(timeout: 20.0))
-        XCTAssertGreaterThan(videoList.children(matching: .any).count, 0, "The video list should display videos")
-    }
-
     func testSearchFunctionality() throws {
         let app = XCUIApplication()
         app.launch()

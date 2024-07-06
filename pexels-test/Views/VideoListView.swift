@@ -106,6 +106,11 @@ struct VideoListView: View {
                                         username: video.user.name
                                     )
                                 )
+                                .onAppear {
+                                    if video == viewModel.videos.last {
+                                        viewModel.loadMoreVideos()
+                                    }
+                                }
                             }
                         }
                     }
