@@ -20,8 +20,8 @@ internal enum L10n {
     internal static let noResultsFound = L10n.tr("Localizable", "videoDetail.noResultsFound", fallback: "No results found")
     /// Ok
     internal static let ok = L10n.tr("Localizable", "videoDetail.ok", fallback: "Ok")
-    /// Video Detail
-    internal static let title = L10n.tr("Localizable", "videoDetail.title", fallback: "Video Detail")
+    /// Video Search
+    internal static let title = L10n.tr("Localizable", "videoDetail.title", fallback: "Video Search")
   }
 }
 // swiftlint:enable explicit_type_interface function_parameter_count identifier_name line_length

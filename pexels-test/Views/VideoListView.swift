@@ -60,6 +60,7 @@ struct VideoListView: View {
             .background(.tertiaryForeground.opacity(Constants.searchBarBackgroundOpacity))
             .cornerRadius(Constants.searchBarCornerRadius)
         }
+        .padding(.horizontal, Padding.extraSmall)
     }
 
     private var emptyStateView: some View {
