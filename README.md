@@ -119,8 +119,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Screenshots
 
-![1](https://github.com/cucobein/pexels-test/assets/13151201/3dd8e8c7-f5c9-4e28-959f-af74b65dc392)
+<img src="https://github.com/cucobein/pexels-test/assets/13151201/3dd8e8c7-f5c9-4e28-959f-af74b65dc392" width="320">
 
-![2](https://github.com/cucobein/pexels-test/assets/13151201/7ffddf2a-cdc6-4ae2-a522-c11035d2daf2)
+<img src="https://github.com/cucobein/pexels-test/assets/13151201/7ffddf2a-cdc6-4ae2-a522-c11035d2daf2" width="320">
 
 Feel free to customize the README to better fit your project's specifics and any additional details you'd like to include.
