@@ -29,6 +29,12 @@
 		FD789BDC2C35147B008A759D /* MockPexelsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD789BDB2C35147B008A759D /* MockPexelsService.swift */; };
 		FD789BDE2C351714008A759D /* Secrets.plist in Resources */ = {isa = PBXBuildFile; fileRef = FD789BDD2C351714008A759D /* Secrets.plist */; };
 		FD789BE02C351797008A759D /* VideoListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD789BDF2C351797008A759D /* VideoListViewModelTests.swift */; };
+		FD78D1172C38C49400F9803D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = FD78D1152C38C49400F9803D /* Localizable.strings */; };
+		FD78D11C2C38C62D00F9803D /* Strings+Generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD78D11A2C38C62D00F9803D /* Strings+Generated.swift */; };
+		FD78D11D2C38C62D00F9803D /* XCAssets+Generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD78D11B2C38C62D00F9803D /* XCAssets+Generated.swift */; };
+		FD78D1212C38C68C00F9803D /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FD78D1202C38C68C00F9803D /* Montserrat-Bold.ttf */; };
+		FD78D1232C38C69400F9803D /* Montserrat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FD78D1222C38C69400F9803D /* Montserrat-Regular.ttf */; };
+		FD78D1252C38C69900F9803D /* BebasNeue-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FD78D1242C38C69900F9803D /* BebasNeue-Regular.ttf */; };
 		FD7F19242C37686C0058085A /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD7F19232C37686C0058085A /* NetworkMonitor.swift */; };
 		FD7F19262C3768A20058085A /* MockNetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD7F19252C3768A20058085A /* MockNetworkMonitor.swift */; };
 		FD7F19282C376B100058085A /* NetworkMonitorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD7F19272C376B100058085A /* NetworkMonitorTests.swift */; };
@@ -105,6 +111,13 @@
 		FD789BDB2C35147B008A759D /* MockPexelsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockPexelsService.swift; sourceTree = "<group>"; };
 		FD789BDD2C351714008A759D /* Secrets.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Secrets.plist; sourceTree = SOURCE_ROOT; };
 		FD789BDF2C351797008A759D /* VideoListViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoListViewModelTests.swift; sourceTree = "<group>"; };
+		FD78D1162C38C49400F9803D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		FD78D11A2C38C62D00F9803D /* Strings+Generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Strings+Generated.swift"; sourceTree = "<group>"; };
+		FD78D11B2C38C62D00F9803D /* XCAssets+Generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "XCAssets+Generated.swift"; sourceTree = "<group>"; };
+		FD78D1202C38C68C00F9803D /* Montserrat-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Bold.ttf"; sourceTree = "<group>"; };
+		FD78D1222C38C69400F9803D /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Regular.ttf"; sourceTree = "<group>"; };
+		FD78D1242C38C69900F9803D /* BebasNeue-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BebasNeue-Regular.ttf"; sourceTree = "<group>"; };
+		FD78D1262C38C7B800F9803D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		FD7F19232C37686C0058085A /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
 		FD7F19252C3768A20058085A /* MockNetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNetworkMonitor.swift; sourceTree = "<group>"; };
 		FD7F19272C376B100058085A /* NetworkMonitorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitorTests.swift; sourceTree = "<group>"; };
@@ -168,9 +181,10 @@
 		FD22A1C22C33801700763C01 /* pexels-test */ = {
 			isa = PBXGroup;
 			children = (
+				FD78D1262C38C7B800F9803D /* Info.plist */,
 				FD789BDD2C351714008A759D /* Secrets.plist */,
-				FD7F19302C37B7120058085A /* Extensions */,
 				FD789BD72C35103F008A759D /* App */,
+				FD7F19302C37B7120058085A /* Extensions */,
 				FD789BA72C34F386008A759D /* Repository */,
 				FD789BA62C34F380008A759D /* Services */,
 				FD789BD52C35101E008A759D /* ViewModels */,
@@ -295,9 +309,55 @@
 		FD789BD82C35104B008A759D /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				FD78D1182C38C49D00F9803D /* Localizable */,
+				FD78D1142C38C45C00F9803D /* Generated */,
+				FD78D1192C38C4B100F9803D /* Fonts */,
 				FD22A1C72C33801800763C01 /* Assets.xcassets */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		FD78D1142C38C45C00F9803D /* Generated */ = {
+			isa = PBXGroup;
+			children = (
+				FD78D11A2C38C62D00F9803D /* Strings+Generated.swift */,
+				FD78D11B2C38C62D00F9803D /* XCAssets+Generated.swift */,
+			);
+			path = Generated;
+			sourceTree = "<group>";
+		};
+		FD78D1182C38C49D00F9803D /* Localizable */ = {
+			isa = PBXGroup;
+			children = (
+				FD78D1152C38C49400F9803D /* Localizable.strings */,
+			);
+			path = Localizable;
+			sourceTree = "<group>";
+		};
+		FD78D1192C38C4B100F9803D /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				FD78D11F2C38C64800F9803D /* Montserrat */,
+				FD78D11E2C38C63F00F9803D /* Bebas Neue */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		FD78D11E2C38C63F00F9803D /* Bebas Neue */ = {
+			isa = PBXGroup;
+			children = (
+				FD78D1242C38C69900F9803D /* BebasNeue-Regular.ttf */,
+			);
+			path = "Bebas Neue";
+			sourceTree = "<group>";
+		};
+		FD78D11F2C38C64800F9803D /* Montserrat */ = {
+			isa = PBXGroup;
+			children = (
+				FD78D1222C38C69400F9803D /* Montserrat-Regular.ttf */,
+				FD78D1202C38C68C00F9803D /* Montserrat-Bold.ttf */,
+			);
+			path = Montserrat;
 			sourceTree = "<group>";
 		};
 		FD7F19212C3767C30058085A /* Entities */ = {
@@ -343,8 +403,9 @@
 				FD22A1BC2C33801700763C01 /* Sources */,
 				FD22A1BD2C33801700763C01 /* Frameworks */,
 				FD22A1BE2C33801700763C01 /* Resources */,
-				FD789BA42C34D087008A759D /* Swiftlint */,
 				FD789BB22C34F4F8008A759D /* Embed Frameworks */,
+				FD78D1132C38C40300F9803D /* SwiftGen */,
+				FD789BA42C34D087008A759D /* Swiftlint */,
 			);
 			buildRules = (
 			);
@@ -451,9 +512,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FD78D1252C38C69900F9803D /* BebasNeue-Regular.ttf in Resources */,
+				FD78D1212C38C68C00F9803D /* Montserrat-Bold.ttf in Resources */,
+				FD78D1232C38C69400F9803D /* Montserrat-Regular.ttf in Resources */,
+				FD78D1172C38C49400F9803D /* Localizable.strings in Resources */,
 				FD22A1CB2C33801800763C01 /* Preview Assets.xcassets in Resources */,
-				FD789BDE2C351714008A759D /* Secrets.plist in Resources */,
 				FD22A1C82C33801800763C01 /* Assets.xcassets in Resources */,
+				FD789BDE2C351714008A759D /* Secrets.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -494,6 +559,28 @@
 			shellPath = /bin/sh;
 			shellScript = "cd \"$SRCROOT\"\nexport PATH=/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin\n\n# Run SwiftLint\nif [ -x /opt/homebrew/bin/swiftlint ]; then\n  /opt/homebrew/bin/swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
+		FD78D1132C38C40300F9803D /* SwiftGen */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/pexels-test/Resources/Localizable/en.lproj/Localizable.strings",
+				"$(SRCROOT)/pexels-test/Resources/Assets.xcassets",
+			);
+			name = SwiftGen;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/pexels-test/Resources/Generated/XCAssets+Generated.swift",
+				"$(DERIVED_FILE_DIR)/pexels-test/Resources/Generated/Strings+Generated.swift",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "#!/bin/sh\ncd \"$SRCROOT\"\nexport PATH=/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin\n\n# Run SwiftGen with explicit configuration file path\nif [ -x /opt/homebrew/bin/swiftgen ]; then\n  /opt/homebrew/bin/swiftgen config run --config \"$SRCROOT/swiftgen.yml\"\nelse\n  echo \"warning: SwiftGen not installed, download from https://github.com/SwiftGen/SwiftGen\"\nfi\n";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -501,10 +588,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FD78D11D2C38C62D00F9803D /* XCAssets+Generated.swift in Sources */,
 				FDB41E362C38261100DE8C66 /* CacheManager.swift in Sources */,
 				FD789BA92C34F3B6008A759D /* PexelsService.swift in Sources */,
 				FD8720502C37D648000C1C34 /* VideoDetailView.swift in Sources */,
 				FD7F19242C37686C0058085A /* NetworkMonitor.swift in Sources */,
+				FD78D11C2C38C62D00F9803D /* Strings+Generated.swift in Sources */,
 				FD789BAB2C34F4A3008A759D /* Video.swift in Sources */,
 				FD7F192C2C37A8FE0058085A /* VideoListCell.swift in Sources */,
 				FD22A1C62C33801700763C01 /* ContentView.swift in Sources */,
@@ -556,6 +645,17 @@
 			targetProxy = FD22A1DB2C33801900763C01 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		FD78D1152C38C49400F9803D /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FD78D1162C38C49400F9803D /* en */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		FD22A1E22C33801900763C01 /* Debug */ = {
@@ -689,6 +789,7 @@
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "pexels-test/Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -724,6 +825,7 @@
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "pexels-test/Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
